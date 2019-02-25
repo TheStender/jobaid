@@ -7,16 +7,57 @@
 
 <body onload="dueDate()">
 <h1>Welcome to the Facility Post Pay Process!</h1>
-<input type="checkbox" name="step1" value="Step 1">Step One<br>
+<input type="checkbox" name="step1" value="Step 1">Step One - Change "Assign Case Tasks" task to five days out (today counts). <strong>Add task note</strong><br>
 <p id="demo"></p>
 <p id="demo2"></p>
 <p id="demo3"></p>
-<input type="checkbox" name="step2" value="Step 2">Step Two<br>
-<input type="checkbox" name="step3" value="Step 3">Step Three<br>
-<input type="checkbox" name="step4" value="Step 4">Step Four<br>
-<input type="checkbox" name="step5" value="Step 5">Step Five<br>
-<input type="text" value="Enter text to copy" id="myInput">
-<button onclick="myFunction()">Copy text!</button>
+<input type="checkbox" name="step2" value="Step 2">Step Two - Enter information into case tracker<br>
+<input type="checkbox" name="step3" value="Step 3">Step Three - Check for PICTS folder on Y Drive<br>
+<input type="checkbox" name="step4" value="Step 4">Step Four - In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old<br>
+<input type="checkbox" name="step5" value="Step 5">Step Five - Check for clinical review SS<br>
+<input type="checkbox" name="step6" value="Step 6">Step Six - Check Project Summary SS<br>
+<input type="checkbox" name="step7" value="Step 7">Step Seven - Check Exceptions Facility SS - if no match found need to call provider for information
+<button onclick="window.location.href = 'phonescript.html';">Phone Script</button>
+<br>
+<input type="checkbox" name="step8" value="Step 8">Step Eight<br>
+
+
+<h3>Provider Verification Verbiage</h3>
+<textarea id="providerVerbiage" cols="50" rows="10">PROVIDER VERIFICATION: 
+Called (XXX)XXX-XXXX and spoke with XXX. Per XXX mailing address is: XXX. 
+
+Medical records requests via fax ARE (are NOT) accepted. Faxes may be sent to: (XXX)XXX-XXXX.
+
+Direct Line for Medical Records Department is: (XXX)XXX-XXXX.
+ 
+TAT stated as XXXXXX. 
+
+Contacts screen updated.
+</textarea>
+<button onclick="copyProvider()">Copy text!</button>
+
+<h3>Exception Facilities Verbiage</h3>
+<textarea id="exceptionVerbiage" cols="50" rows="10">Checked Exception Facilities Spreadsheet. TIN XXX is an exception facility. 
+Mailing address is: XXX. 
+
+Faxes may be sent to: (XXX)XXX-XXXX. 
+
+MRR/Patient List Instructions are: [insert MRR/Patient List Instructions]. 
+
+First name/last name, (XXX)XXX-XXXX, XXX@XXX.com is primary contact for facility. 
+
+Special Instructions for Case: [insert information from Special Instructions tab]
+</textarea>
+<button onclick="copyException()">Copy text!</button>
+
+<h3>Client/Network Verbiage</h3>
+<textarea id="networkVerbiage" cols="30 rows="20">CLIENT/NETWORK APPROVAL: 
+Placed letter information on the Client & Network Approval SharePoint</textarea>
+<button onclick="copyClient()">Copy text!</button>
+<br>
+<br>
+<input type="text" name="number" id="phoneNumber" value="763-361-6898">
+<button onclick="copyPhone()">Copy phone number</button>
 
 
 </body>

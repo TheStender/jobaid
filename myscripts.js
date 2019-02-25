@@ -1,16 +1,32 @@
-function myFunction() {
-	var copyText = document.getElementById("myInput");
+function copyProvider() {
+	var copyText = document.getElementById("providerVerbiage");
 	copyText.select();
 	document.execCommand("copy");
-	alert("Copied the text! " + copyText.value);
+	alert("Copied the text!");
 }
 
-function alertFunction() {
-	alert("Alert!");
+function copyException() {
+	var copyText = document.getElementById("exceptionVerbiage");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Copied the text!");
+}
+
+function copyClient() {
+	var copyText = document.getElementById("networkVerbiage");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Copied the text!");
+}
+
+function copyPhone() {
+	var copyText = document.getElementById("phoneNumber");
+	copyText.select();
+	document.execCommand("copy");
+	alert("Copied the text!");
 }
 
 function dueDate() {
-	
 	var dayMS = new Date().getTime() + (86400000 * 4);
 	var ifSaturday = new Date().getTime() + (86400000 * 3);
 	var ifSunday = new Date().getTime() + (86400000 * 2);
