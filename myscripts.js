@@ -67,5 +67,12 @@ function dueDate() {
 	
 	document.getElementById("demo").innerHTML = "The due date is: " + newdate;
 	
+	var dayHold = new Date().getTime() + (86400000 * 29);
+	var holdDate = new Date(dayHold);
+	var holdMonth = holdDate.getMonth()+1;
+	var holdDay = holdDate.getDate();
+	var holdYear = holdDate.getFullYear();
+	var newHoldDate = holdMonth + "/" + holdDay + "/" + holdYear;
+	document.getElementById("holdDate").innerHTML = "The hold date is: " + newHoldDate;
 	
 }
