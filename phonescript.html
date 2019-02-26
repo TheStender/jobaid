@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>Phone Script</title>
+<script src="myscripts.js"></script>
 </head>
 <body>
 <h2>Phone Script</h2>
@@ -15,6 +16,46 @@
 </ul>
 </p>
 <p>Thank you so much for your time today.</p>
+<br>
+<!--
+<input type="text" id="nameOfPerson" value="Name of Person">
+<br>
+<textarea id="address" cols="50" rows="8">Enter Address Here</textarea>
+<br>
+<input type="text" id="companyFax" value="Fax Number">
+<br>
+<input type="text" id="companyPhone" value="Phone Number">
+<br>
+<input type="text" id="contactName" value="Name of Contact">
+<br>
+<input type="text" id="tatTime" value="Turn Around Time for Processing" size="35">
+<br>
+<textarea id="specialInstructions" cols="50" rows="4">Enter Special Instructions Here</textarea>
+<br>
+<br>
+<br>
+<button onclick="copyAddress()">Copy address info</button>
+<br>
+<br>
+-->
+<h4>Enter Address Information Here</h4>
+<textarea id="testArea" cols="50" rows="20">
+Name of Person: 
+Address: 
+
+
+
+Fax Number: 
+Contact Number: 
+Contact Name(if Applicable): 
+Turn Around Time: 
+Special Instructions: 
+
+</textarea>
+<br>
+<button onclick="copyWholeAddress()">Copy address info</button>
+<br>
+<br>
 <br>
 <button onclick="window.location.href = 'index.html';">Back to Job Aid</button>
 

@@ -20,10 +20,29 @@ function copyClient() {
 }
 
 function copyPhone() {
-	var copyText = document.getElementById("phoneNumber");
-	copyText.select();
+	var copyText = document.getElementById("phoneNumber").select();
 	document.execCommand("copy");
 	alert("Copied the text!");
+}
+/*
+function copyAddress() {
+	var copyName = document.getElementById("nameOfPerson");
+	var copyHospAddress = document.getElementById("address");
+	var copyFax = document.getElementById("companyFax");
+	var copyPhone = document.getElementById("companyPhone");
+	var copyContact = document.getElementById("contactName");
+	var copyTat = document.getElementById("tatTime");
+	var copyInstructions = document.getElementById("specialInstructions");
+	var wholeAddress = copyHospAddress + copyFax;
+	// document.execCommand("copy");
+	document.getElementById("testArea").value = copyName;
+	
+	
+} */
+
+function copyWholeAddress() {
+	var copyWholeAddress = document.getElementById("testArea").select();
+	document.execCommand("copy");
 }
 
 function dueDate() {
