@@ -6,6 +6,7 @@ Main Page:
 
 Phone Script:
 - Complete verbiage testing
+- Fix the if there's a contact name there's a space
 - Text Area for notes?
 - Finish formatting the phone number correctly
 
