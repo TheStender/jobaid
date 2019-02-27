@@ -1,0 +1,20 @@
+Main Page:
+- Area for detection ID and path (any way to save this? along with PICTS ID?)
+- Add the adding the contact step
+- For the medical requests request letter step, add that it needs to be assigned to user
+- Remove alerts
+
+Phone Script:
+- Complete verbiage testing
+- Text Area for notes?
+- Finish formatting the phone number correctly
+
+Receive Records:
+- Add verbiage to copy
+- Clean up steps
+- 
+
+
+
+Powershell if possible
+- Write PICTS ID, Detection ID, info to excel file
