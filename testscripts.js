@@ -1,29 +1,21 @@
-function copyProvider() {
-	var copyText = document.getElementById("providerVerbiage");
-	copyText.select();
-	document.execCommand("copy");
-	alert("Copied the text!");
+/* ORIGINAL FUNCTION
+
+function getVerbiage() {
+	var originalPhone = document.getElementById("originalPhone").value;
+	var name = document.getElementById("nameOfPerson").value;
+	var address = document.getElementById("address").value;
+	var fax = document.getElementById("companyFax").value;
+	var phone = document.getElementById("companyPhone").value;
+	var contactName = document.getElementById("contactName").value;
+	var tatTime= document.getElementById("tatTime").value;
+	var special = document.getElementById("specialInstructions").value;
+	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE (are NOT) accepted. Faxes may be sent to:${fax}\n\nDirect Line for Medical Records Department is: ${phone}. Ask for ${contactName}\n\nTAT stated as ${tatTime}.\n\nSpecial Instructions are: ${special} \n\nContacts screen updated.`;
+	document.getElementById("providerVerbiage").value = allTogether;
+	var copyVerbiage = document.getElementById("providerVerbiage").select();
+	document.execCommand("copy");	
 }
 
-function copyException() {
-	var copyText = document.getElementById("exceptionVerbiage");
-	copyText.select();
-	document.execCommand("copy");
-	alert("Copied the text!");
-}
-
-function copyClient() {
-	var copyText = document.getElementById("networkVerbiage");
-	copyText.select();
-	document.execCommand("copy");
-	alert("Copied the text!");
-}
-
-function copyPhone() {
-	var copyText = document.getElementById("phoneNumber").select();
-	document.execCommand("copy");
-	alert("Copied the text!");
-}
+*/
 
 function getVerbiage() {
 	var originalPhone = document.getElementById("originalPhone").value;
@@ -72,43 +64,12 @@ function getVerbiage() {
 	document.execCommand("copy");	
 }
 
-function dueDate() {
-	var dayMS = new Date().getTime() + (86400000 * 4);
-	var ifSaturday = new Date().getTime() + (86400000 * 3);
-	var ifSunday = new Date().getTime() + (86400000 * 2);
-	var taskDate = new Date(dayMS);
-	
-	var dayOfWeek = taskDate.getDay();
-	if(dayOfWeek == 0) {
-		var taskDate = new Date(ifSunday)
-	} else if (dayOfWeek == 6) {
-		var taskDate = new Date(ifSaturday)
-	} else {
-		taskDate = taskDate;
-	}
-
-	var month = taskDate.getMonth()+1;
-	var day = taskDate.getDate();
-	var year = taskDate.getFullYear();
-	var newdate = month + "/" + day + "/" + year;
-	
-	document.getElementById("demo").innerHTML = "The due date is: " + newdate;
-	
-	var dayHold = new Date().getTime() + (86400000 * 29);
-	var holdDate = new Date(dayHold);
-	var holdMonth = holdDate.getMonth()+1;
-	var holdDay = holdDate.getDate();
-	var holdYear = holdDate.getFullYear();
-	var newHoldDate = holdMonth + "/" + holdDay + "/" + holdYear;
-	document.getElementById("holdDate").innerHTML = "The hold date is: " + newHoldDate;
-	
-}
-
 function formatPhone(obj) {
 	var numbers = obj.value.replace(/\D/g, ''),
-        char = { 0: '(', 3: ') ', 6: ' - ' };
+        char = { 0: '(', 3: ') ', 6: '-' };
             obj.value = '';
             for (var i = 0; i < numbers.length; i++) {
                 obj.value += (char[i] || '') + numbers[i];
             }
 }
+
