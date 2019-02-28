@@ -2,27 +2,30 @@ function copyProvider() {
 	var copyText = document.getElementById("providerVerbiage");
 	copyText.select();
 	document.execCommand("copy");
-	alert("Copied the text!");
 }
 
 function copyException() {
 	var copyText = document.getElementById("exceptionVerbiage");
 	copyText.select();
 	document.execCommand("copy");
-	alert("Copied the text!");
 }
 
 function copyClient() {
-	var copyText = document.getElementById("networkVerbiage");
-	copyText.select();
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'CLIENT/NETWORK APPROVAL: \nPlaced letter information on the Client & Network Approval SharePoint';
+	document.body.appendChild(textarea);
+	textarea.select();
 	document.execCommand("copy");
-	alert("Copied the text!");
+	textarea.setAttribute("hidden", true);
 }
 
 function copyPhone() {
-	var copyText = document.getElementById("phoneNumber").select();
+	let textarea = document.createElement('textarea');
+	textarea.textContent = '763-361-6898';
+	document.body.appendChild(textarea);
+	textarea.select();
 	document.execCommand("copy");
-	alert("Copied the text!");
+	textarea.setAttribute("hidden", true);
 }
 
 function getVerbiage() {
@@ -66,7 +69,7 @@ function getVerbiage() {
 		special = `Special Instructions are: ${special}\n\n`;
 	}
 
-	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\nDirect Line for Medical Records Department is: ${phone}\n\n${contactName}${email}${tatTime}${special}Contacts screen updated.`;
+	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\nDirect Line for Medical Records Department is: ${phone}${contactName}${email}${tatTime}${special}Contacts screen updated.`;
 	document.getElementById("providerVerbiage").value = allTogether;
 	var copyVerbiage = document.getElementById("providerVerbiage").select();
 	document.execCommand("copy");	
@@ -106,9 +109,18 @@ function dueDate() {
 
 function formatPhone(obj) {
 	var numbers = obj.value.replace(/\D/g, ''),
-        char = { 0: '(', 3: ') ', 6: ' - ' };
+        char = { 0: '', 3: '-', 6: '-' };
             obj.value = '';
             for (var i = 0; i < numbers.length; i++) {
                 obj.value += (char[i] || '') + numbers[i];
             }
+}
+
+function getTaskNote() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'Case Assigned to Anthony Stender';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
 }

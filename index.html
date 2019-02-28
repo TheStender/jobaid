@@ -7,11 +7,10 @@
 
 <body onload="dueDate()">
 <h1>Welcome to the Facility Post Pay Process!</h1>
-<button onclick="window.location = 'records.html';">Receive Records</button>
+<button onclick="window.location = 'records.html';" class="btn btn-primary">Receive Records</button>
 <br>
 <br>
-<input type="checkbox" name="step1" value="Step 1">Step One - Change "Assign Case Tasks" task to five days out (today counts). <strong>Add task note</strong>
-<p id="demo"></p>
+<input type="checkbox" name="step1" value="Step 1">Step One - Change "Assign Case Tasks" to In Progress. <span id="demo"></span> - <strong>Add task note&emsp;</strong><button onclick="getTaskNote()">Get Note</button><br>
 <input type="checkbox" name="step2" value="Step 2">Step Two - Enter information into case tracker<br>
 <input type="checkbox" name="step3" value="Step 3">Step Three - Check for PICTS folder on Y Drive<br>
 <input type="checkbox" name="step4" value="Step 4">Step Four - In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old<br>
@@ -21,16 +20,27 @@
 <button onclick="window.location = 'phonescript.html';">Phone Script</button>
 <br>
 <input type="checkbox" name="step8" value="Step 8">Step Eight - Add and complete Validate Correspondence Address Task - <strong>Add task note</strong><br>
-<input type="checkbox" name="step9" value="Step 9">Step Nine - Create a new patient list SS based on patient tab of Clinical Review SS<br>
-<input type="checkbox" name="step10" value="Step 10">Step Ten - Upload the new patient list SS into PICTS<br>
-<input type="checkbox" name="step11" value="Step 11">Step Eleven - Add item to the client/network approval list<br>
-<input type="checkbox" name="step12" value="Step 12">Step Twelve - Add notify external parties task and complete it - <strong>Add task note</strong><br>
-<input type="checkbox" name="step13" value="Step 13">Step Thirteen - Medical Records Request Letter Task<br>
-<input type="checkbox" name="step14" value="Step 14">Step Fourteen - Complete MRR Fax Confirmation Task - <strong>Add task note</strong><br>
-<input type="checkbox" name="step15" value="Step 15">Step Fifteen - Create hold for 120th day task<br>
-<p id="holdDate"></p>
+<input type="checkbox" name="step9" value="Step 9">Step Nine - Create the new contact information on PICTS Contact tab<br>
+<input type="checkbox" name="step10" value="Step 10">Step Ten - Create a new patient list SS based on patient tab of Clinical Review SS<br>
+<input type="checkbox" name="step11" value="Step 11">Step Eleven - Upload the new patient list SS into PICTS<br>
+<input type="checkbox" name="step12" value="Step 12">Step Twelve - Add item to the client/network approval list<br>
+<input type="checkbox" name="step13" value="Step 13">Step Thirteen - Add notify external parties task and complete it - <strong>Add task note&emsp;</strong><button onclick="copyClient()">Get Note</button><br>
+<input type="checkbox" name="step14" value="Step 14">Step Fourteen - Medical Records Request Letter Task - make sure to assign to User, Run X&emsp;<button onclick="copyPhone()">Get Phone Number</button><br>
+<input type="checkbox" name="step15" value="Step 15">Step Fifteen - Complete MRR Fax Confirmation Task - <strong>Add task note</strong><br>
+<input type="checkbox" name="step16" value="Step 16">Step Sixteen - Create hold for 120th day task. <span id="holdDate"></span><br>
 
-<!-- INSERT HERE -->
+
+<!-- HOPEFULLY NO LONGER NEEDED
+<h3>Client/Network Verbiage</h3>
+<textarea id="networkVerbiage" cols="30 rows="20">CLIENT/NETWORK APPROVAL: 
+Placed letter information on the Client & Network Approval SharePoint</textarea>
+<button onclick="copyClient()">Copy text!</button>
+&emsp;&emsp;&emsp;&emsp;&emsp;
+-->
+
+<br>
+<br>
+<br>
 <h3>Provider Verification Verbiage&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Exception Facilities Verbiage</h3>
 
 <textarea id="providerVerbiage" cols="50" rows="15">PROVIDER VERIFICATION: 
@@ -61,15 +71,28 @@ Special Instructions for Case: [insert information from Special Instructions tab
 <button onclick="copyProvider()">Copy text!</button>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 <button onclick="copyException()">Copy text!</button>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
 
-<h3>Client/Network Verbiage</h3>
-<textarea id="networkVerbiage" cols="30 rows="20">CLIENT/NETWORK APPROVAL: 
-Placed letter information on the Client & Network Approval SharePoint</textarea>
-<button onclick="copyClient()">Copy text!</button>
-&emsp;&emsp;&emsp;&emsp;&emsp;
-<input type="text" name="number" id="phoneNumber" value="763-361-6898">
-<button onclick="copyPhone()">Copy phone number</button>
 
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 </html>

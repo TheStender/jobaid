@@ -1,21 +1,38 @@
 Main Page:
-- Area for detection ID and path (any way to save this? along with PICTS ID?)
+- Area for detection ID and path (any way to save this? along with PICTS ID? write to text file? or just to variable to have saved somewhere? do i even need a variable? would i use them anywhere besides to copy individually? path would be useful and could have variables for different areas (ie: intake\medical records or \02 Clinical) where you can just click a button to copy the path needed)
+- Use bootstrap to make everything awesome
+
+
+Phone Script:
+- Text Area for notes?
+
+Receive Records:
+- Add verbiage to copy (need case tracker SS for verbiage)
+
+
+Powershell if possible
+- Write PICTS ID, Detection ID, info to/from excel file
+
+
+
+
+COMPLETED
+Main Page:
 - Add the adding the contact step
 - For the medical requests request letter step, add that it needs to be assigned to user
 - Remove alerts
+- Instead of the bold "Add task note" put in button to just copy the note needed
+- Get due dates into steps so they're not off on their own
 
 Phone Script:
 - Complete verbiage testing
 - Fix the if there's a contact name there's a space
-- Text Area for notes?
 - Finish formatting the phone number correctly
 
 Receive Records:
-- Add verbiage to copy
 - Clean up steps
-- 
 
 
-
-Powershell if possible
-- Write PICTS ID, Detection ID, info to excel file
+Dream steps:
+- iframe to copy from PICTS
+- network traffic to find call request
