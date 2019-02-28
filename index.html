@@ -2,91 +2,122 @@
 
 <head>
 <title>Facility Post Pay Process</title>
-<script src="myscripts.js"></script>
+<style>
+h1 {
+	text-align: center;
+}
+
+.was-validated {
+	text-indent: 20px;
+}
+
+</style>
 </head>
 
 <body onload="dueDate()">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="myscripts.js"></script>
 <h1>Welcome to the Facility Post Pay Process!</h1>
-<button onclick="window.location = 'records.html';" class="btn btn-primary">Receive Records</button>
-<br>
-<br>
-<input type="checkbox" name="step1" value="Step 1">Step One - Change "Assign Case Tasks" to In Progress. <span id="demo"></span> - <strong>Add task note&emsp;</strong><button onclick="getTaskNote()">Get Note</button><br>
-<input type="checkbox" name="step2" value="Step 2">Step Two - Enter information into case tracker<br>
-<input type="checkbox" name="step3" value="Step 3">Step Three - Check for PICTS folder on Y Drive<br>
-<input type="checkbox" name="step4" value="Step 4">Step Four - In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old<br>
-<input type="checkbox" name="step5" value="Step 5">Step Five - Check for clinical review SS<br>
-<input type="checkbox" name="step6" value="Step 6">Step Six - Check Project Summary SS for MRR Template<br>
-<input type="checkbox" name="step7" value="Step 7">Step Seven - Check Exceptions Facility SS - if no match found need to call provider for information
-<button onclick="window.location = 'phonescript.html';">Phone Script</button>
-<br>
-<input type="checkbox" name="step8" value="Step 8">Step Eight - Add and complete Validate Correspondence Address Task - <strong>Add task note</strong><br>
-<input type="checkbox" name="step9" value="Step 9">Step Nine - Create the new contact information on PICTS Contact tab<br>
-<input type="checkbox" name="step10" value="Step 10">Step Ten - Create a new patient list SS based on patient tab of Clinical Review SS<br>
-<input type="checkbox" name="step11" value="Step 11">Step Eleven - Upload the new patient list SS into PICTS<br>
-<input type="checkbox" name="step12" value="Step 12">Step Twelve - Add item to the client/network approval list<br>
-<input type="checkbox" name="step13" value="Step 13">Step Thirteen - Add notify external parties task and complete it - <strong>Add task note&emsp;</strong><button onclick="copyClient()">Get Note</button><br>
-<input type="checkbox" name="step14" value="Step 14">Step Fourteen - Medical Records Request Letter Task - make sure to assign to User, Run X&emsp;<button onclick="copyPhone()">Get Phone Number</button><br>
-<input type="checkbox" name="step15" value="Step 15">Step Fifteen - Complete MRR Fax Confirmation Task - <strong>Add task note</strong><br>
-<input type="checkbox" name="step16" value="Step 16">Step Sixteen - Create hold for 120th day task. <span id="holdDate"></span><br>
-
-
-<!-- HOPEFULLY NO LONGER NEEDED
-<h3>Client/Network Verbiage</h3>
-<textarea id="networkVerbiage" cols="30 rows="20">CLIENT/NETWORK APPROVAL: 
-Placed letter information on the Client & Network Approval SharePoint</textarea>
-<button onclick="copyClient()">Copy text!</button>
-&emsp;&emsp;&emsp;&emsp;&emsp;
--->
-
-<br>
-<br>
-<br>
-<h3>Provider Verification Verbiage&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Exception Facilities Verbiage</h3>
-
-<textarea id="providerVerbiage" cols="50" rows="15">PROVIDER VERIFICATION: 
-Called (XXX)XXX-XXXX and spoke with XXX. Per XXX mailing address is: XXX. 
-
-Medical records requests via fax ARE (are NOT) accepted. Faxes may be sent to: (XXX)XXX-XXXX.
-
-Direct Line for Medical Records Department is: (XXX)XXX-XXXX.
- 
-TAT stated as XXXXXX. 
-
-Contacts screen updated.
-</textarea>
-
-
-<textarea id="exceptionVerbiage" cols="50" rows="15">Checked Exception Facilities Spreadsheet. TIN XXX is an exception facility. 
-Mailing address is: XXX. 
-
-Faxes may be sent to: (XXX)XXX-XXXX. 
-
-MRR/Patient List Instructions are: [insert MRR/Patient List Instructions]. 
-
-First name/last name, (XXX)XXX-XXXX, XXX@XXX.com is primary contact for facility. 
-
-Special Instructions for Case: [insert information from Special Instructions tab]
-</textarea>
-<br>
-<button onclick="copyProvider()">Copy text!</button>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-<button onclick="copyException()">Copy text!</button>
-<br>
-<br>
-<br>
 <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-    <div class="col-sm">
-      One of three columns
-    </div>
-  </div>
+<div class="row">
+<div class="col">
+<button onclick="window.location.href = 'records.html';" type="button" class="btn btn-primary btn-lg btn-block">Click here to Receive Records</button>
 </div>
+<div class="col">
+<button onclick="window.location.href = 'verbiage.html';" type="button" class="btn btn-primary btn-lg btn-block">To Verbiages</button>
+</div>
+</div>
+</div>
+<br>
+<br>
+
+<form class="was-validated">
+
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step1" required>
+<label class="custom-control-label" for="step1">Step One - Change "Assign Case Tasks" to In Progress. <span id="demo"></span> &emsp;</label><button type="button" onclick="getTaskNote()" class="btn btn-danger btn-sm" id="step1Button">Add Task Note</button>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step2" required>
+<label class="custom-control-label" for="step2">Step Two - Enter information into case tracker</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step3" required>
+<label class="custom-control-label" for="step3">Step Three - Check for PICTS folder on Y Drive</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step4" required>
+<label class="custom-control-label" for="step4">Step Four - In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step5" required>
+<label class="custom-control-label" for="step5">Step Five - Check for clinical review SS</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step6" required>
+<label class="custom-control-label" for="step6">Step Six - Check Project Summary SS for MRR Template</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step7" required>
+<label class="custom-control-label" for="step7">Step Seven - Check Exceptions Facility SS - if no match found need to call provider for information&emsp;
+<button type="button" onclick="window.location = 'phonescript.html';" class="btn btn-info btn-sm">Phone Script</button>
+</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step8" required>
+<label class="custom-control-label" for="step8">Step Eight - Add and complete Validate Correspondence Address Task&emsp;<button type="button" onclick="copyConfirmation()" class="btn btn-danger btn-sm" id="step8Button">Add Task Note</button></label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step9" required>
+<label class="custom-control-label" for="step9">Step Nine - Create the new contact information on PICTS Contact tab</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step10" required>
+<label class="custom-control-label" for="step10">Step Ten - Create a new patient list SS based on patient tab of Clinical Review SS</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step11" required>
+<label class="custom-control-label" for="step11">Step Eleven - Upload the new patient list SS into PICTS</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step12" required>
+<label class="custom-control-label" for="step12">Step Twelve - Add item to the client/network approval list</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step13" required>
+<label class="custom-control-label" for="step13">Step Thirteen - Add notify external parties task and complete it&emsp;<button type="button" onclick="copyClient()" class="btn btn-danger btn-sm" id="step13Button">Add Task Note</button></label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step14" required>
+<label class="custom-control-label" for="step14">Step Fourteen - Medical Records Request Letter Task - make sure to assign to User, Run X&emsp;<button type="button" onclick="copyPhone()" class="btn btn-info btn-sm">Get Phone Number</button></label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step15" required>
+<label class="custom-control-label" for="step15">Step Fifteen - Complete MRR Fax Confirmation Task &emsp;</label><button type="button" onclick="copyConfirmation()" class="btn btn-danger btn-sm">Add Task Note</button>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step16" required>
+<label class="custom-control-label" for="step16">Step Sixteen - Create hold for 120th day task. <span id="holdDate"></span></label>
+</div>
+</form>
+
+
 
 
 

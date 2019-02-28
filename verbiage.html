@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Verbiages</title>
+<style>
+h1 {
+	text-align: center;
+}
+
+#red {
+	color: red;
+}
+</style>
+</head>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="myscripts.js"></script>
+<h1>Verbiages to Copy</h1>
+<button onclick="window.location.href = 'index.html';" type="button" class="btn btn-primary btn-lg btn-block">Back to Job Aid</button>
+<br>
+
+<div class="container">
+<div class="row">
+<div class="col">
+<button type="button "onclick="copyProvider()" class="btn btn-info btn-lg">Provider Verification Text</button>
+</div>
+<div class="col">
+<button type="button" onclick="copyException()" class="btn btn-info btn-lg">Exception Spreadsheet Text</button>
+</div>
+<div class="col">
+<button type="button" onclick="copyClient()" class="btn btn-info btn-lg">Client Network Text</button>
+</div>
+</div>
+<br>
+<br>
+<div class="row">
+<div class="col">
+<button type="button" onclick="copyNoInvoice()" class="btn btn-info btn-lg">Records without Invoice Text</button>
+</div>
+<div class="col">
+<button type="button" onclick="copyWithInvoice()" class="btn btn-info btn-lg">Records <span id="red">with</span> Invoice Text</button>
+</div>
+<div class="col">
+<button type="button" onclick="copyClinical()" class="btn btn-info btn-lg">Refer to Clinical Text</button>
+</div>
+</div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</body>
+</html>

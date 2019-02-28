@@ -1,11 +1,17 @@
 <html>
 <head>
-<title>TEST AREA ONLY</title>
-<script src="myscripts.js"></script>
+<title>Phone Script</title>
+<style>
+h1 {
+	text-align: center;
+}
+</style>
 </head>
 <body>
-<h1>TEST AREA ONLY</h1>
-<button onclick="window.location.href = 'index.html';">Back to Job Aid</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="myscripts.js"></script>
+<h1>Phone Script</h1>
+<button onclick="window.location.href = 'index.html';" type="button" class="btn btn-primary btn-lg btn-block">Back to Job Aid</button>
 <p>Hello, this is <insert your name> calling from UnitedHealthcare. I am conducting an audit of previously paid claims. I am getting ready to send a request for medical records for multiple (one of your) patients. Before doing that, I wanted to confirm the address to send the request to.</p>
 <p>
 <ul>
@@ -17,7 +23,11 @@
 </ul>
 </p>
 <p>Thank you so much for your time today.</p>
-<br>
+
+
+<div class="container">
+<div class="row">
+<div class="col">
 <input type="text" id="originalPhone" placeholder="Phone Number Called" onblur="formatPhone(this)">
 <br>
 <input type="text" id="nameOfPerson" placeholder="Contact Name">
@@ -35,17 +45,22 @@
 <input type="text" id="tatTime" placeholder="Turn Around Time for Processing" size="35">
 <br>
 <textarea id="specialInstructions" cols="50" rows="4" placeholder="Special Instructions"></textarea>
-<br>
-<br>
-<br>
+</div>
+
+<div class="col">
 <button onclick="getVerbiage()">Get Verbiage</button>
 <br>
-<textarea id="testVerbiage" cols="50" rows="15" placeholder="Verbiage will go here">This is a test, it is only a test</textarea>
-</table>
+<textarea id="providerVerbiage" cols="50" rows="15" placeholder="Verbiage will go here"></textarea>
 <br>
 <br>
+</div>
+</div>
+</div>
 
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 </body>
 </html>

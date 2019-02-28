@@ -1,13 +1,19 @@
-function copyProvider() {
-	var copyText = document.getElementById("providerVerbiage");
-	copyText.select();
-	document.execCommand("copy");
-}
-
 function copyException() {
-	var copyText = document.getElementById("exceptionVerbiage");
-	copyText.select();
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'Checked Exception Facilities Spreadsheet. TIN XXX is an exception facility. \nMailing address is:\nXXX.\n\nFaxes may be sent to: (XXX)XXX-XXXX.\n\nMRR/Patient List Instructions are: [insert MRR/Patient List Instructions]. \n\nFirst name/last name, (XXX)XXX-XXXX, XXX@XXX.com is primary contact for facility. \n\nSpecial Instructions for Case: [insert information from Special Instructions tab]';
+	document.body.appendChild(textarea);
+	textarea.select();
 	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+} 
+
+function copyProvider() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'PROVIDER VERIFICATION:\nCalled (XXX)XXX-XXXX and spoke with XXX. Per XXX mailing address is:\nXXX.\n\nMedical records requests via fax ARE (are NOT) accepted. Faxes may be sent to: (XXX)XXX-XXXX.\n\nDirect Line for Medical Records Department is: (XXX)XXX-XXXX.\n\nTAT stated as XXXXXX. \n\nContacts screen updated.';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
 }
 
 function copyClient() {
@@ -45,10 +51,13 @@ function getVerbiage() {
 		fax = `accepted. Faxes may be sent to: ${fax}`;
 	}
 
-	if (contactName.length == 0) {
+	if (phone.length == 0 && contactName.length == 0) {
+		phone = "";
 		contactName = "";
+	} else if (phone.length != 0 && contactName.length == 0) {
+		phone = `Direct Line for Medical Records Department is: ${phone}.\n\n`;
 	} else {
-		contactName = `. Ask for ${contactName}\n\n`
+		phone = 'Direct Line for Medical Records Department is: ${phone}. Ask for ${contactName}\n\n';
 	}
 
 	if (email.length == 0) {
@@ -69,7 +78,7 @@ function getVerbiage() {
 		special = `Special Instructions are: ${special}\n\n`;
 	}
 
-	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\nDirect Line for Medical Records Department is: ${phone}${contactName}${email}${tatTime}${special}Contacts screen updated.`;
+	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\n${phone}${contactName}${email}${tatTime}${special}Contacts screen updated.`;
 	document.getElementById("providerVerbiage").value = allTogether;
 	var copyVerbiage = document.getElementById("providerVerbiage").select();
 	document.execCommand("copy");	
@@ -124,3 +133,80 @@ function getTaskNote() {
 	document.execCommand("copy");
 	textarea.setAttribute("hidden", true);
 }
+
+function copyClaimLines() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'Claim_lines:XX, C&S:0, E&I:0, M&R:0';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+} 
+
+function copyConfirmation() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'Fax Confirmation Attached';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+} 
+
+function copyNoInvoice() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'RECORDS RECEIVED:\nReceived (XX) of (XX) Medical Records. NO Invoice(s).\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+}
+
+function copyWithInvoice() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'RECORDS RECEIVED: \nReceived (XX) of (XX) Medical Records. YES, Invoice attached to case.\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+}
+
+function copyClinical() {
+	let textarea = document.createElement('textarea');
+	textarea.textContent = 'Refer to Clinical for review. Path: ';
+	document.body.appendChild(textarea);
+	textarea.select();
+	document.execCommand("copy");
+	textarea.setAttribute("hidden", true);
+}
+
+$(document).ready(function() {
+
+$("#step1Button").click(function() {
+  $(this).toggleClass("btn-danger btn-success ");
+});
+
+$("#step8Button").click(function() {
+  $(this).toggleClass("btn-danger btn-success ");
+});
+
+$("#step13Button").click(function() {
+  $(this).toggleClass("btn-danger btn-success ");
+});
+
+$("#noInvoice").click(function() {
+  $(this).toggleClass("btn-info btn-success ");
+});
+
+$("#yesInvoice").click(function() {
+  $(this).toggleClass("btn-info btn-success ");
+});
+
+$("#clinicalNote").click(function() {
+  $(this).toggleClass("btn-info btn-success ");
+});
+
+$("#recordsStep15Button").click(function() {
+  $(this).toggleClass("btn-info btn-success ");
+});
+
+});

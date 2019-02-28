@@ -8,10 +8,27 @@ Phone Script:
 
 Receive Records:
 - Add verbiage to copy (need case tracker SS for verbiage)
+- add checkbox to step 5 if there's an invoice
+- on step 8 (verbiage) add button for note, if invoice box is checked do the different note
+- make text box for base path (at step 1?)
+- for step 1 of invoice use that base path textbox to generate path for invoices with button
+- for step 13 use the base path textbox to generate path for clinical with button
+
+
+
+Verbiage:
+- Enter all verbiage
+- Make buttons and hidden textareas to just click the button to copy the verbiage
 
 
 Powershell if possible
 - Write PICTS ID, Detection ID, info to/from excel file
+
+
+
+Dream steps:
+- iframe to copy from PICTS
+- network traffic to find call request
 
 
 
@@ -31,8 +48,3 @@ Phone Script:
 
 Receive Records:
 - Clean up steps
-
-
-Dream steps:
-- iframe to copy from PICTS
-- network traffic to find call request

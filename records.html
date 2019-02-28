@@ -1,35 +1,138 @@
 <html>
 <head>
 <title>Receiving Records</title>
-<script src="myscripts.js"></script>
+<style>
+h1 {
+	text-align: center;
+}
+
+.was-validated {
+	text-indent: 20px;
+}
+
+
+</style>
 </head>
 <body>
-<h2>Receiving Medical Records Job Aid</h2>
-<button onclick="window.location.href = 'index.html';">Back to Job Aid</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="myscripts.js"></script>
+<h1>Receiving Medical Records Job Aid</h1>
+<button onclick="window.location.href = 'index.html';" type="button" class="btn btn-primary btn-lg btn-block" id="topButton">Back to Job Aid</button>
 <br>
 <br>
 
-<input type="checkbox" name="step1" value="Step 1">Step One - Get path from notes<br>
-<input type="checkbox" name="step2" value="Step 2">Step Two - Go to that path<br>
-<input type="checkbox" name="step3" value="Step 3">Step Three - Go to edr tab, check records that aren't validated (should be in DocDNA)<br>
-<input type="checkbox" name="step4" value="Step 4">Step Four - Search by PICTS number to get all records, validate records, check first 5, middle 5, last 5<br>
-<input type="checkbox" name="step5" value="Step 5">Step Five - Make sure to check for invoices - if there's an invoice follow Invoice Steps<br>
-<input type="checkbox" name="step6" value="Step 6">Step Six - Change validation status in PICTS, select MR sufficient box for patient<br>
-<input type="checkbox" name="step7" value="Step 7">Step Seven - Check line of business and number of patients<br>
-<input type="checkbox" name="step8" value="Step 8">Step Eight - Complete the Validate compare task, add note (verbiage from case tracker with LOB & #), then complete the task<br>
-<input type="checkbox" name="step9" value="Step 9">Step Nine - Change case status to case investigation<br>
-<input type="checkbox" name="step10" value="Step 10">Step Ten - Go to project code summary SS, look up detection ID<br>
-<input type="checkbox" name="step11" value="Step 11">Step Eleven - Check for clinical review task due date and where to send task<br>
-<input type="checkbox" name="step12" value="Step 12">Step Twelve - Go back to PICTS, create perform case review (clinical) task<br>
-<input type="checkbox" name="step13" value="Step 13">Step Thirteen - Enter team and due date, add task note (verbiage on SS refer to clinical review + path)<br>
-<input type="checkbox" name="step14" value="Step 14">Step Fourteen - Copy the initial clinical folder path for previous note<br>
-<input type="checkbox" name="step15" value="Step 15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)<br>
+<form class="was-validated">
+<h4>Receive Records Steps</h4>
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step1" required>
+<label class="custom-control-label" for="step1">Step One - Get path from notes</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step2" required>
+<label class="custom-control-label" for="step2">Step Two - Go to that path</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step3" required>
+<label class="custom-control-label" for="step3">Step Three - Go to edr tab, check records that aren't validated (should be in DocDNA)</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step4" required>
+<label class="custom-control-label" for="step4">Step Four - Search by PICTS number to get all records, validate records, check first 5, middle 5, last 5</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step5" required>
+<label class="custom-control-label" for="step5">Step Five - Make sure to check for invoices - if there's an invoice follow Invoice Steps</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step6" required>
+<label class="custom-control-label" for="step6">Step Six - Change validation status in PICTS, select MR sufficient box for patient</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step7" required>
+<label class="custom-control-label" for="step7">Step Seven - Check line of business and number of patients</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step8" required>
+<label class="custom-control-label" for="step8">Step Eight - Complete the Validate compare task, add note (verbiage from case tracker with LOB & #), then complete the task&emsp;<button type="button" id="noInvoice" class="btn btn-info btn-sm" onclick="copyNoInvoice()">No Invoice</button>&emsp;<button type="button" id="yesInvoice" class="btn btn-info btn-sm" onclick="copyWithInvoice()">Yes Invoice</button></label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step9" required>
+<label class="custom-control-label" for="step9">Step Nine - Change case status to case investigation</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step10" required>
+<label class="custom-control-label" for="step10">Step Ten - Go to project code summary SS, look up detection ID</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step11" required>
+<label class="custom-control-label" for="step11">Step Eleven - Check for clinical review task due date and where to send task</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step12" required>
+<label class="custom-control-label" for="step12">Step Twelve - Go back to PICTS, create perform case review (clinical) task</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step13" required>
+<label class="custom-control-label" for="step13">Step Thirteen - Enter team and due date, add task note (verbiage on SS refer to clinical review + path)&emsp;<button type="button" id="clinicalNote" class="btn btn-info btn-sm" onClick="copyClinical()">Get Note</button></label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step14" required>
+<label class="custom-control-label" for="step14">Step Fourteen - Copy the initial clinical folder path for previous note</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step15" required>
+<label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
+</div>
+
+
+</form>
 <br>
+
+
+<form class="was-validated">
 <h4>Invoice Steps</h4>
-<input type="checkbox" name="step1" value="Step 1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there<br>
-<input type="checkbox" name="step1" value="Step 1">Use invoice medical records note instead of regular note<br>
-<input type="checkbox" name="step1" value="Step 1">Submit to invoice sharepoint<br>
-<input type="checkbox" name="step1" value="Step 1">Add note to case about submitting invoice to sharepoint<br>
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step1" required>
+<label class="custom-control-label" for="step1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step2" required>
+<label class="custom-control-label" for="step2">Use invoice medical records note instead of regular note</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step3" required>
+<label class="custom-control-label" for="step3">Submit to invoice sharepoint</label>
+</div>
+
+<div class="custom-control custom-checkbox mb-3">
+<input type="checkbox" class="custom-control-input" id="step4" required>
+<label class="custom-control-label" for="step4">Add note to case about submitting invoice to sharepoint</label>
+</div>
+</form>
+
 <br>
+<button onclick="window.location.href = 'index.html';" type="button" class="btn btn-primary btn-lg btn-block" id="buttomButton">Back to Job Aid</button>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 </html>
