@@ -51,14 +51,18 @@ function getVerbiage() {
 		fax = `accepted. Faxes may be sent to: ${fax}`;
 	}
 
-	if (phone.length == 0 && contactName.length == 0) {
-		phone = "";
-		contactName = "";
+
+	if (phone.length != 0 && contactName.length != 0) {
+		phone = `Direct Line for Medical Records Department is: ${phone}. Ask for ${contactName}\n\n`;
+	} else if (phone.length == 0 && contactName.length != 0) {
+		contactName = `Contact Name is: ${contactName}\n\n`;
 	} else if (phone.length != 0 && contactName.length == 0) {
 		phone = `Direct Line for Medical Records Department is: ${phone}.\n\n`;
 	} else {
-		phone = 'Direct Line for Medical Records Department is: ${phone}. Ask for ${contactName}\n\n';
+		phone = "";
+		contactName = "";
 	}
+
 
 	if (email.length == 0) {
 		email = "";
@@ -78,7 +82,7 @@ function getVerbiage() {
 		special = `Special Instructions are: ${special}\n\n`;
 	}
 
-	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\n${phone}${contactName}${email}${tatTime}${special}Contacts screen updated.`;
+	var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\n${phone}${email}${tatTime}${special}Contacts screen updated.`;
 	document.getElementById("providerVerbiage").value = allTogether;
 	var copyVerbiage = document.getElementById("providerVerbiage").select();
 	document.execCommand("copy");	

@@ -1,6 +1,15 @@
+Overall:
+- add manual letter page and steps - through ups and through fax
+- auto letters through mail page/step?
+- add follow up page
+- make word document with form fields(?) to enter info
+- Add nav bar at top
+- keep track of cases you're working and the steps you've completed, can tie in the info like picts case, destination id, etc - can save info when you go into phone script/manual letter steps, etc
+
 Main Page:
 - Area for detection ID and path (any way to save this? along with PICTS ID? write to text file? or just to variable to have saved somewhere? do i even need a variable? would i use them anywhere besides to copy individually? path would be useful and could have variables for different areas (ie: intake\medical records or \02 Clinical) where you can just click a button to copy the path needed)
 - Use bootstrap to make everything awesome
+
 
 
 Phone Script:
