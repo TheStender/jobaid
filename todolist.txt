@@ -14,6 +14,7 @@ Main Page:
 
 Phone Script:
 - Text Area for notes?
+- make button better
 
 Receive Records:
 - Add verbiage to copy (need case tracker SS for verbiage)
