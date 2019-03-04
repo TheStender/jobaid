@@ -1,138 +1,149 @@
 <html>
 <head>
-<title>Receiving Records</title>
-<style>
-h1 {
-	text-align: center;
-}
+    <title>Receiving Records</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
 
-.was-validated {
-	text-indent: 20px;
-}
-
-
-</style>
+        .was-validated {
+            text-indent: 20px;
+        }
+    </style>
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="myscripts.js"></script>
-<h1>Receiving Medical Records Job Aid</h1>
-<button onclick="window.location.href = 'home.html';" type="button" class="btn btn-primary btn-lg btn-block" id="topButton">Back to Job Aid</button>
-<br>
-<br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myscripts.js"></script>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="home.html"><img src="logo.jpg" width="40" height="40" alt=""></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<	span class="navbar-toggler-icon"></span>
+			</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+		<a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
+		<a class="nav-item nav-link" href="phonescript.html">Phone Script</a>
+		<a class="nav-item nav-link" href="verbiage.html">Get Verbiage</a>
+    </div>
+	</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+    <h1>Receiving Medical Records Job Aid</h1>
+    <br>
+    <br>
 
-<form class="was-validated">
-<h4>Receive Records Steps</h4>
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step1" required>
-<label class="custom-control-label" for="step1">Step One - Get path from notes</label>
-</div>
+    <form class="was-validated">
+        <h4>Receive Records Steps</h4>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step1" required>
+            <label class="custom-control-label" for="step1">Step One - Get path from notes</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step2" required>
-<label class="custom-control-label" for="step2">Step Two - Go to that path</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step2" required>
+            <label class="custom-control-label" for="step2">Step Two - Go to that path</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step3" required>
-<label class="custom-control-label" for="step3">Step Three - Go to edr tab, check records that aren't validated (should be in DocDNA)</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step3" required>
+            <label class="custom-control-label" for="step3">Step Three - Go to edr tab, check records that aren't validated (should be in DocDNA)</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step4" required>
-<label class="custom-control-label" for="step4">Step Four - Search by PICTS number to get all records, validate records, check first 5, middle 5, last 5</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step4" required>
+            <label class="custom-control-label" for="step4">Step Four - Search by PICTS number to get all records, validate records, check first 5, middle 5, last 5</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step5" required>
-<label class="custom-control-label" for="step5">Step Five - Make sure to check for invoices - if there's an invoice follow Invoice Steps</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step5" required>
+            <label class="custom-control-label" for="step5">Step Five - Make sure to check for invoices - if there's an invoice follow Invoice Steps</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step6" required>
-<label class="custom-control-label" for="step6">Step Six - Change validation status in PICTS, select MR sufficient box for patient</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step6" required>
+            <label class="custom-control-label" for="step6">Step Six - Change validation status in PICTS, select MR sufficient box for patient</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step7" required>
-<label class="custom-control-label" for="step7">Step Seven - Check line of business and number of patients</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step7" required>
+            <label class="custom-control-label" for="step7">Step Seven - Check line of business and number of patients</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step8" required>
-<label class="custom-control-label" for="step8">Step Eight - Complete the Validate compare task, add note (verbiage from case tracker with LOB & #), then complete the task&emsp;<button type="button" id="noInvoice" class="btn btn-info btn-sm" onclick="copyNoInvoice()">No Invoice</button>&emsp;<button type="button" id="yesInvoice" class="btn btn-info btn-sm" onclick="copyWithInvoice()">Yes Invoice</button></label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step8" required>
+            <label class="custom-control-label" for="step8">Step Eight - Complete the Validate compare task, add note (verbiage from case tracker with LOB & #), then complete the task&emsp;<button type="button" id="noInvoice" class="btn btn-info btn-sm" onclick="copyNoInvoice()">No Invoice</button>&emsp;<button type="button" id="yesInvoice" class="btn btn-info btn-sm" onclick="copyWithInvoice()">Yes Invoice</button></label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step9" required>
-<label class="custom-control-label" for="step9">Step Nine - Change case status to case investigation</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step9" required>
+            <label class="custom-control-label" for="step9">Step Nine - Change case status to case investigation</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step10" required>
-<label class="custom-control-label" for="step10">Step Ten - Go to project code summary SS, look up detection ID</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step10" required>
+            <label class="custom-control-label" for="step10">Step Ten - Go to project code summary SS, look up detection ID</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step11" required>
-<label class="custom-control-label" for="step11">Step Eleven - Check for clinical review task due date and where to send task</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step11" required>
+            <label class="custom-control-label" for="step11">Step Eleven - Check for clinical review task due date and where to send task</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step12" required>
-<label class="custom-control-label" for="step12">Step Twelve - Go back to PICTS, create perform case review (clinical) task</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step12" required>
+            <label class="custom-control-label" for="step12">Step Twelve - Go back to PICTS, create perform case review (clinical) task</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step13" required>
-<label class="custom-control-label" for="step13">Step Thirteen - Enter team and due date, add task note (verbiage on SS refer to clinical review + path)&emsp;<button type="button" id="clinicalNote" class="btn btn-info btn-sm" onClick="copyClinical()">Get Note</button></label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step13" required>
+            <label class="custom-control-label" for="step13">Step Thirteen - Enter team and due date, add task note (verbiage on SS refer to clinical review + path)&emsp;<button type="button" id="clinicalNote" class="btn btn-info btn-sm" onClick="copyClinical()">Get Note</button></label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step14" required>
-<label class="custom-control-label" for="step14">Step Fourteen - Copy the initial clinical folder path for previous note</label>
-</div>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step14" required>
+            <label class="custom-control-label" for="step14">Step Fourteen - Copy the initial clinical folder path for previous note</label>
+        </div>
 
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step15" required>
-<label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
-</div>
-
-
-</form>
-<br>
-
-
-<form class="was-validated">
-<h4>Invoice Steps</h4>
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step1" required>
-<label class="custom-control-label" for="step1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
-</div>
-
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step2" required>
-<label class="custom-control-label" for="step2">Use invoice medical records note instead of regular note</label>
-</div>
-
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step3" required>
-<label class="custom-control-label" for="step3">Submit to invoice sharepoint</label>
-</div>
-
-<div class="custom-control custom-checkbox mb-3">
-<input type="checkbox" class="custom-control-input" id="step4" required>
-<label class="custom-control-label" for="step4">Add note to case about submitting invoice to sharepoint</label>
-</div>
-</form>
-
-<br>
-<button onclick="window.location.href = 'home.html';" type="button" class="btn btn-primary btn-lg btn-block" id="buttomButton">Back to Job Aid</button>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step15" required>
+            <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
+        </div>
 
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    </form>
+    <br>
+
+
+    <form class="was-validated">
+        <h4>Invoice Steps</h4>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step1" required>
+            <label class="custom-control-label" for="step1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step2" required>
+            <label class="custom-control-label" for="step2">Use invoice medical records note instead of regular note</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step3" required>
+            <label class="custom-control-label" for="step3">Submit to invoice sharepoint</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="step4" required>
+            <label class="custom-control-label" for="step4">Add note to case about submitting invoice to sharepoint</label>
+        </div>
+    </form>
+
+    <br>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 </html>

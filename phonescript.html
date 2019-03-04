@@ -1,66 +1,83 @@
 <html>
 <head>
-<title>Phone Script</title>
-<style>
-h1 {
-	text-align: center;
-}
-</style>
+    <title>Phone Script</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="myscripts.js"></script>
-<h1>Phone Script</h1>
-<button onclick="window.location.href = 'home.html';" type="button" class="btn btn-primary btn-lg btn-block">Back to Job Aid</button>
-<p>Hello, this is <insert your name> calling from UnitedHealthcare. I am conducting an audit of previously paid claims. I am getting ready to send a request for medical records for multiple (one of your) patients. Before doing that, I wanted to confirm the address to send the request to.</p>
-<p>
-<ul>
-<li>Do you accept requests via fax or email for audits? If so, what is the best fax number/email address?</li>
-<li>Can you also confirm the appropriate street address to include on the request? </li>
-<li>Can you also provide the best phone number to follow up with if these records are not received?  Is there someone specific that I should be speaking with?</li>
-<li>What is the timeframe for processing the request?</li>
-<li>Do you have any questions for me? Is there anything special that I should include with my request?</li>
-</ul>
-</p>
-<p>Thank you so much for your time today.</p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myscripts.js"></script>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="home.html"><img src="logo.jpg" width="40" height="40" alt=""></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<	span class="navbar-toggler-icon"></span>
+			</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+		<a class="nav-item nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
+		<a class="nav-item nav-link" href="records.html">Receive Records</a>
+		<a class="nav-item nav-link" href="verbiage.html">Get Verbiage</a>
+    </div>
+	</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+    <h1>Phone Script</h1>
+    <br>
+    <p>Hello, this is <insert your name> calling from UnitedHealthcare. I am conducting an audit of previously paid claims. I am getting ready to send a request for medical records for multiple (one of your) patients. Before doing that, I wanted to confirm the address to send the request to.</p>
+    <p>
+        <ul>
+            <li>Do you accept requests via fax or email for audits? If so, what is the best fax number/email address?</li>
+            <li>Can you also confirm the appropriate street address to include on the request? </li>
+            <li>Can you also provide the best phone number to follow up with if these records are not received?  Is there someone specific that I should be speaking with?</li>
+            <li>What is the timeframe for processing the request?</li>
+            <li>Do you have any questions for me? Is there anything special that I should include with my request?</li>
+        </ul>
+    </p>
+    <p>Thank you so much for your time today.</p>
 
 
-<div class="container">
-<div class="row">
-<div class="col">
-<input type="text" id="originalPhone" placeholder="Phone Number Called" onblur="formatPhone(this)">
-<br>
-<input type="text" id="nameOfPerson" placeholder="Contact Name">
-<br>
-<textarea id="address" cols="50" rows="8" placeholder="Address"></textarea>
-<br>
-<input type="text" id="companyFax" placeholder="Fax Number" onblur="formatPhone(this)">
-<br>
-<input type="text" id="companyPhone" placeholder="Phone Number" onblur="formatPhone(this)">
-<br>
-<input type="text" id="contactName" placeholder="Name of Contact">
-<br>
-<input type="text" id="email" placeholder="Email Address?">
-<br>
-<input type="text" id="tatTime" placeholder="Turn Around Time for Processing" size="35">
-<br>
-<textarea id="specialInstructions" cols="50" rows="4" placeholder="Special Instructions"></textarea>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="text" id="originalPhone" placeholder="Phone Number Called" onblur="formatPhone(this)">
+                <br>
+                <input type="text" id="nameOfPerson" placeholder="Contact Name">
+                <br>
+                <textarea id="address" cols="50" rows="8" placeholder="Address"></textarea>
+                <br>
+                <input type="text" id="companyFax" placeholder="Fax Number" onblur="formatPhone(this)">
+                <br>
+                <input type="text" id="companyPhone" placeholder="Phone Number" onblur="formatPhone(this)">
+                <br>
+                <input type="text" id="contactName" placeholder="Name of Contact">
+                <br>
+                <input type="text" id="email" placeholder="Email Address?">
+                <br>
+                <input type="text" id="tatTime" placeholder="Turn Around Time for Processing" size="35">
+                <br>
+            <textarea id="specialInstructions" cols="50" rows="4" placeholder="Special Instructions"></textarea>
+            </div>
 
-<div class="col">
-<button onclick="getVerbiage()">Get Verbiage</button>
-<br>
-<textarea id="providerVerbiage" cols="50" rows="15" placeholder="Verbiage will go here"></textarea>
-<br>
-<br>
-</div>
-</div>
-</div>
+            <div class="col">
+                <button type="button" onclick="getVerbiage()" class="btn btn-primary btn-sm" id="verbiageButton">Get Verbiage</button>
+                <br>
+				<br>
+                <textarea id="providerVerbiage" cols="50" rows="15" placeholder="Verbiage will go here"></textarea>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 </body>
 </html>
