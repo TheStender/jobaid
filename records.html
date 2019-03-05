@@ -2,18 +2,26 @@
 <head>
     <title>Receiving Records</title>
     <style>
-        h1 {
-            text-align: center;
-        }
+h1 {
+	text-align: center;
+}
 
-        .was-validated {
-            text-indent: 20px;
-        }
+.was-validated {
+        text-indent: 20px;
+}
+
+#invoiceSteps {
+        text-indent: 40px;
+}
+
+.hide {
+  display: none;
+}
     </style>
 </head>
 <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="myscripts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="home.html"><img src="logo.jpg" width="40" height="40" alt=""></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,8 +41,7 @@
     <h1>Receiving Medical Records Job Aid</h1>
     <br>
     <br>
-
-    <form class="was-validated">
+<form class="was-validated">
         <h4>Receive Records Steps</h4>
         <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="step1" required>
@@ -60,6 +67,43 @@
             <input type="checkbox" class="custom-control-input" id="step5" required>
             <label class="custom-control-label" for="step5">Step Five - Make sure to check for invoices - if there's an invoice follow Invoice Steps</label>
         </div>
+
+	<div class="custom-control custom-checkbox mb-3">
+	<input type="checkbox" id="yesToInvoice" class="custom-control-input" required>
+	<label for="yesToInvoice" class="custom-control-label"><strong>Check if invoice</strong></label>
+	</div>
+	</form>
+
+
+    <div class="hideUnless hide">
+
+    <form class="was-validated" id="invoiceSteps">
+        <h4>Invoice Steps</h4>
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="invoice1" required>
+            <label class="custom-control-label" for="invoice1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="invoice2" required>
+            <label class="custom-control-label" for="invoice2">Use invoice medical records note instead of regular note</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="invoice3" required>
+            <label class="custom-control-label" for="invoice3">Submit to invoice sharepoint</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="invoice4" required>
+            <label class="custom-control-label" for="invoice4">Add note to case about submitting invoice to sharepoint</label>
+        </div>
+    </form>
+	<br>
+	</div>
+
+	<form class="was-validated">
+
 
         <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="step6" required>
@@ -111,35 +155,13 @@
             <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
         </div>
 
-
-    </form>
-    <br>
-
-
-    <form class="was-validated">
-        <h4>Invoice Steps</h4>
-        <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step1" required>
-            <label class="custom-control-label" for="step1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
-        </div>
-
-        <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step2" required>
-            <label class="custom-control-label" for="step2">Use invoice medical records note instead of regular note</label>
-        </div>
-
-        <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step3" required>
-            <label class="custom-control-label" for="step3">Submit to invoice sharepoint</label>
-        </div>
-
-        <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step4" required>
-            <label class="custom-control-label" for="step4">Add note to case about submitting invoice to sharepoint</label>
-        </div>
-    </form>
+	</form>
+    
 
     <br>
+
+    <script src="myscripts.js"></script>
+    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

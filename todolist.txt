@@ -19,12 +19,11 @@ Phone Script:
 
 Receive Records:
 - Add verbiage to copy (need case tracker SS for verbiage)
-- add checkbox to step 5 if there's an invoice
 - on step 8 (verbiage) add button for note, if invoice box is checked do the different note
 - make text box for base path (at step 1?)
 - for step 1 of invoice use that base path textbox to generate path for invoices with button
 - for step 13 use the base path textbox to generate path for clinical with button
-- hide invoice steps unless invoice button is checked, then show them
+
 
 
 
@@ -65,6 +64,7 @@ Phone Script:
 
 Receive Records:
 - Clean up steps
+- hide invoice steps unless invoice button is checked, then show them
 
 Verbiage:
 - Make the button turn green when clicked
