@@ -13,17 +13,19 @@ Main Page:
 
 
 
+
 Phone Script:
 - Text Area for notes?
+- change verbiage for no faxes to "faxes are NOT"
 
 
 Receive Records:
 - Add verbiage to copy (need case tracker SS for verbiage)
-- on step 8 (verbiage) add button for note, if invoice box is checked do the different note
 - make text box for base path (at step 1?)
 - for step 1 of invoice use that base path textbox to generate path for invoices with button
 - for step 13 use the base path textbox to generate path for clinical with button
-
+- add area to put in line of business and number of patients, then put that info into verbiage
+- add in 14 day date in step 12 or 13
 
 
 
@@ -55,6 +57,7 @@ Main Page:
 - Remove alerts
 - Instead of the bold "Add task note" put in button to just copy the note needed
 - Get due dates into steps so they're not off on their own
+- add step for closing assign case task
 
 Phone Script:
 - Complete verbiage testing
@@ -65,6 +68,7 @@ Phone Script:
 Receive Records:
 - Clean up steps
 - hide invoice steps unless invoice button is checked, then show them
+- on step 8 (verbiage) add button for note, if invoice box is checked do the different note
 
 Verbiage:
 - Make the button turn green when clicked

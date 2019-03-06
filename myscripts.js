@@ -183,11 +183,7 @@ function copyClinical() {
     textarea.setAttribute("hidden", true);
 }
 
-document.getElementById('yesToInvoice').onchange = function(){
-  var cart = document.getElementsByClassName('hideUnless')[0];
-  if (this.checked) cart.classList.remove('hide');
-  else cart.classList.add('hide');
-}
+
 
 $(document).ready(function () {
 

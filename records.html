@@ -152,7 +152,7 @@ h1 {
 
         <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="step15" required>
-            <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one)&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
+            <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one) <strong>Needs to be note type Clinical</strong>&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
         </div>
 
 	</form>
@@ -161,6 +161,14 @@ h1 {
     <br>
 
     <script src="myscripts.js"></script>
+
+<script>
+document.getElementById('yesToInvoice').onchange = function(){
+  var cart = document.getElementsByClassName('hideUnless')[0];
+  if (this.checked) cart.classList.remove('hide');
+  else cart.classList.add('hide');
+}
+</script>
     
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
