@@ -139,12 +139,41 @@ function getTaskNote() {
 }
 
 function copyClaimLines() {
+	var patNum = document.getElementById('patientNumber');
+	var recNum = document.getElementById('recordsReceived');
+	var selType = document.getElementById('lineOfBusiness');
+	var busType = selType.options[selType.selectedIndex].text;
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'Claim_lines:XX, C&S:0, E&I:0, M&R:0';
+	if(busType == "E&I") {
+		textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:${patNum.value}, M&R:0`;
+	} else if (busType == "M&R") {
+		textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:0, M&R:${patNum.value}`;
+	} else {
+		textarea.textContent = `Claim_lines:${patNum.value}, C&S:${patNum.value}, E&I:0, M&R:0`;
+	}
+    
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
+}
+
+function copyNoInvoiceVerbiage() {
+    let textarea = document.createElement('textarea');
+    textarea.textContent = 'RECORDS RECEIVED:\nReceived (XX) of (XX) Medical Records. NO Invoice(s).\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
+function copyWithInvoiceVerbiage() {
+    let textarea = document.createElement('textarea');
+    textarea.textContent = `RECORDS RECEIVED: \nReceived (XX) of (XX) Medical Records. YES, Invoice attached to case.\n\nE&I = X of X\nM&R = X of X\nC&S = X of X`;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true); 
 }
 
 function copyConfirmation() {
@@ -157,8 +186,12 @@ function copyConfirmation() {
 }
 
 function copyNoInvoice() {
+	var patNum = document.getElementById('patientNumber');
+	var recNum = document.getElementById('recordsReceived');
+	var selType = document.getElementById('lineOfBusiness');
+	var busType = selType.options[selType.selectedIndex].text;
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'RECORDS RECEIVED:\nReceived (XX) of (XX) Medical Records. NO Invoice(s).\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
+    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. NO Invoice(s).\n\n${busType} = ${recNum.value} of ${patNum.value}`;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
@@ -166,8 +199,12 @@ function copyNoInvoice() {
 }
 
 function copyWithInvoice() {
+	var patNum = document.getElementById('patientNumber');
+	var recNum = document.getElementById('recordsReceived');
+	var selType = document.getElementById('lineOfBusiness');
+	var busType = selType.options[selType.selectedIndex].text;
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'RECORDS RECEIVED: \nReceived (XX) of (XX) Medical Records. YES, Invoice attached to case.\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
+    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. YES, Invoice attached to case.\n\n${busType} = ${recNum.value} of ${patNum.value}`;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
