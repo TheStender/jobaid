@@ -34,6 +34,15 @@ function copyPhone() {
     textarea.setAttribute("hidden", true);
 }
 
+function copySharepoint() {
+    let textarea = document.createElement('textarea');
+    textarea.textContent = 'Case added to Post Pay Invoice Submissions SharePoint for invoice payment processing';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
 function getVerbiage() {
     var originalPhone = document.getElementById("originalPhone").value;
     var name = document.getElementById("nameOfPerson").value;
@@ -288,5 +297,8 @@ $(document).ready(function () {
         $(this).toggleClass("btn-primary btn-success ");
     });
 	
+	$("#sharepointInvoice").click(function () {
+        $(this).toggleClass("btn-info btn-success ");
+    });
 	
 });
