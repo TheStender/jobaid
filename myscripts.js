@@ -221,15 +221,26 @@ function copyWithInvoice() {
 }
 
 function copyClinical() {
+	var originalPath = document.getElementById("filePath").value;
+	var clinicalPath = "\\02 Initial Clinical";
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'Refer to Clinical for review. Path: ';
+    textarea.textContent = `Refer to Clinical for review. Path: ${originalPath}${clinicalPath} `;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
 }
 
-
+function getInvoicePath() {
+	var originalPath = document.getElementById("filePath").value;
+	var invoicePath = "\\01 Intake\\Invoices";
+	let textarea = document.createElement('textarea');
+    textarea.textContent = `${originalPath}${invoicePath}`;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
 
 $(document).ready(function () {
 
@@ -298,6 +309,10 @@ $(document).ready(function () {
     });
 	
 	$("#sharepointInvoice").click(function () {
+        $(this).toggleClass("btn-info btn-success ");
+    });
+	
+	$("#invoicePath").click(function () {
         $(this).toggleClass("btn-info btn-success ");
     });
 	

@@ -31,3 +31,7 @@ h1 {
 #red {
 	color: red;
 }
+
+#invoicePath {
+	margin-left: 40px;
+}
