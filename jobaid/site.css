@@ -1,0 +1,37 @@
+h1 {
+	text-align: center;
+}
+
+.pageLink {
+	text-indent: 20px;
+	font-size: 3em;
+	text-align: center;
+}
+
+.footer {
+	position: fixed;
+	left:0;
+	bottom:0;
+	width: 100%;
+	text-align: center;
+}
+
+.was-validated {
+	text-indent: 20px;
+}
+
+#invoiceSteps {
+   text-indent: 40px;
+}
+
+.hide {
+  display: none;
+}
+
+#red {
+	color: red;
+}
+
+#invoicePath {
+	margin-left: 40px;
+}
