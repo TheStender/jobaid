@@ -1,0 +1,30 @@
+To Do List:
+- Add in if multiple lines of business
+- Add a place to enter your name/phone number and it will save it to use in the notes 
+- Add Professional Notes
+  - Contract Request + Paths
+  - Ancillary Note
+- Add deadlines note with dates?
+
+
+
+
+
+
+
+Dream Ideas:
+- Add in a case tracker, which either saves to database or to local storage, or imports from spreadsheet/notepad
+- Get information from PICTS automatically
+  - iframe to copy from PICTS
+  - network traffic to find call request
+
+
+Other Improvement Ideas:
+- Add forms to manual letter template so it's easier to fill out
+
+
+
+Completed Tasks:
+- Add UPS Confirmation Note (4/30)
+- Add a 14 day date for sending to Clinical (4/30)
+- Add a follow up page? Phone Script verbiage/boxes and phone call out note (4/30, just added to phone script page)

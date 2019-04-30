@@ -46,15 +46,15 @@
                 <br>
                 <input type="text" id="nameOfPerson" placeholder="Contact Name">
                 <br>
-                <textarea id="address" cols="50" rows="8" placeholder="Address"></textarea>
-                <br>
+                <textarea id="address" cols="50" rows="8" placeholder="Address/Follow Up Notes"></textarea>
+                <p>Only place follow up information above</p>
                 <input type="text" id="companyFax" placeholder="Fax Number" onblur="formatPhone(this)">
                 <br>
                 <input type="text" id="companyPhone" placeholder="Phone Number" onblur="formatPhone(this)">
                 <br>
                 <input type="text" id="contactName" placeholder="Name of Contact">
                 <br>
-                <input type="text" id="email" placeholder="Email Address?">
+                <input type="text" id="email" placeholder="Email Address">
                 <br>
                 <input type="text" id="tatTime" placeholder="Turn Around Time for Processing" size="35">
                 <br>
@@ -63,6 +63,8 @@
 
             <div class="col">
                 <button type="button" onclick="getVerbiage()" class="btn btn-primary btn-sm" id="verbiageButton">Get Verbiage</button>
+		&emsp;&emsp;
+		<button type="button" onclick="getFollowUp()" class="btn btn-primary btn-sm" id="followUpButton">Get Follow Up Verbiage</button>
                 <br>
 				<br>
                 <textarea id="providerVerbiage" cols="50" rows="15" placeholder="Verbiage will go here"></textarea>

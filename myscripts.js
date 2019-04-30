@@ -97,6 +97,17 @@ function getVerbiage() {
     document.execCommand("copy");
 }
 
+function getFollowUp() {
+    var phone = document.getElementById("originalPhone").value;
+    var contactName = document.getElementById("nameOfPerson").value;
+    var notes = document.getElementById("address").value;
+    var followUpNote = `Phone call out: Called ${phone} and spoke with ${contactName}. Per ${contactName}, ${notes}.`;
+
+    document.getElementById("providerVerbiage").value = followUpNote;
+    var copyFollowUp = document.getElementById("providerVerbiage").select();
+    document.execCommand("copy");
+}
+
 function dueDate() {
     var dayMS = new Date().getTime() + (86400000 * 4);
     var ifSaturday = new Date().getTime() + (86400000 * 3);
@@ -126,7 +137,16 @@ function dueDate() {
     var holdYear = holdDate.getFullYear();
     var newHoldDate = holdMonth + "/" + holdDay + "/" + holdYear;
     document.getElementById("holdDate").innerHTML = "The hold date is: " + newHoldDate;
+}
 
+function clinicalDate() {
+    var clinicalDue = new Date().getTime() + (86400000 * 14);
+    var clinicalDate = new Date(clinicalDue);
+    var clinicalMonth = clinicalDate.getMonth() + 1;
+    var clinicalDay = clinicalDate.getDate();
+    var clinicalYear = clinicalDate.getFullYear();
+    var newClinicalDate = clinicalMonth + "/" + clinicalDay + "/" + clinicalYear 
+    document.getElementById("clinicalDate").innerHTML = "14 Day Due date is: " + newClinicalDate;
 }
 
 function formatPhone(obj) {
@@ -185,26 +205,47 @@ function copyWithInvoiceVerbiage() {
     textarea.setAttribute("hidden", true); 
 }
 
-function copyConfirmation() {
+function copyConfirmation(message) {
+    var message = message;
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'Fax Confirmation Attached';
+    textarea.textContent = message;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
 }
 
+
 function copyNoInvoice() {
 	var patNum = document.getElementById('patientNumber');
 	var recNum = document.getElementById('recordsReceived');
 	var selType = document.getElementById('lineOfBusiness');
 	var busType = selType.options[selType.selectedIndex].text;
-    let textarea = document.createElement('textarea');
-    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. NO Invoice(s).\n\n${busType} = ${recNum.value} of ${patNum.value}`;
+	var recNumInt = recNum.options[recNum.selectedIndex].text;
+
+	var patNum2 = document.getElementById('patientNumber2');
+	var recNum2 = document.getElementById('recordsReceived2');
+	var selType2 = document.getElementById('lineOfBusiness2');
+	var busType2 = selType2.options[selType2.selectedIndex].text;
+	var recNumInt2 = recNum2.options[recNum2.selectedIndex].text;
+
+	let textarea = document.createElement('textarea');
+
+	if(document.getElementById('multipleLines').checked) {
+	    var totalRecords = Number(recNumInt) + Number(recNumInt2);
+	    console.log(totalRecords);
+	}
+	else {
+	    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. NO Invoice(s).\n\n${busType} = ${recNum.value} of ${patNum.value}`;
+	}
+
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
+
+
+
 }
 
 function copyWithInvoice() {
@@ -314,6 +355,14 @@ $(document).ready(function () {
 	
 	$("#invoicePath").click(function () {
         $(this).toggleClass("btn-info btn-success ");
+    });
+
+	$("#upsButton").click(function () {
+        $(this).toggleClass("btn-danger btn-success ");
+    });
+
+	$("#followUpButton").click(function () {
+        $(this).toggleClass("btn-primary btn-success ");
     });
 	
 });
