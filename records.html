@@ -17,7 +17,7 @@
 		<a class="nav-item nav-link" href="setup.html">Case Setup</a>
 		<a class="nav-item nav-link" href="records.html">Receive Records</a>
 		<a class="nav-item nav-link" href="phonescript.html">Phone Script</a>
-		<a class="nav-item nav-link" href="verbiage.html">Get Verbiage</a>
+		<a class="nav-item nav-link" href="userInfo.html">User Info</a>
     </div>
 	</div>
 	</nav>
@@ -31,7 +31,7 @@
         <h4>Receive Records Steps</h4>
         <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="step1" required>
-            <label class="custom-control-label" for="step1">Step One - Get path from notes</label>&emsp;<input type="text" id="filePath" placeholder="Place path here" size="80">
+            <label class="custom-control-label" for="step1">Step One - Get path from notes</label>&emsp;<input type="text" id="filePath" placeholder="Place path here" size="100">
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
@@ -99,13 +99,16 @@
 
         <div class="custom-control custom-checkbox mb-3">
             <input type="checkbox" class="custom-control-input" id="step7" required>
-            <label class="custom-control-label" for="step7">Step Seven - Check line of business and number of patients/records received</label>
+            <label class="custom-control-label" for="step7">Step Seven - Check line of business and number of records/patients received</label>
 	</div>
 
 	<div class="custom-control custom-checkbox mb-3">
 	<input type="checkbox" id="multipleLines" class="custom-control-input" required>
-	<label for="multipleLines" class="custom-control-label"><strong>Check if multiple lines of business</strong></label>&emsp;&emsp;
-				<select name="lineOfBusiness" id="lineOfBusiness">
+	<label for="multipleLines" class="custom-control-label"><strong>Check if multiple lines of business (not available for C&S yet, E&I must come first)</strong></label>&emsp;&emsp;
+				<br>
+			<div class="recordInfo">
+			
+			<select name="lineOfBusiness" id="lineOfBusiness">
 				<option value="eandi">E&I</option>
 				<option value="mandr">M&R</option>
 				<option value="cands">C&S</option>
@@ -134,12 +137,11 @@
 				<option value="8">8</option>
 				<option value="9">9</option>
 			</select>
+			</div>
 			
 			<div class="hideMultiple hide">
 			<select name="lineOfBusiness2" id="lineOfBusiness2">
-				<option value="eandi">E&I</option>
 				<option value="mandr">M&R</option>
-				<option value="cands">C&S</option>
 			</select>
 			
 			<select name="recordsReceived2" id="recordsReceived2">

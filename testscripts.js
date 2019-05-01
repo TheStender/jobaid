@@ -183,22 +183,24 @@ function copyClinical() {
     textarea.setAttribute("hidden", true);
 }
 
-document.getElementById('yesToInvoice').onchange = function(){
-  var cart = document.getElementsByClassName('hideUnless')[0];
-  if (this.checked) cart.classList.remove('hide');
-  else cart.classList.add('hide');
+function retrieve() {
+	var name = document.getElementById("userName").value;
+	var phone = document.getElementById("userPhone").value;
+	localStorage.setItem("userName", name);
+	localStorage.setItem("userPhone", phone);
+	document.getElementById("newUserName").innerHTML = localStorage.getItem("userName");
+	document.getElementById("newUserPhone").innerHTML = localStorage.getItem("userPhone");
 }
 
+function showUserInfo() {
+	var userName = localStorage.getItem("userName");
+	var userPhone = localStorage.getItem("userPhone");
+	document.getElementById("currentUserName").innerHTML = userName;
+	document.getElementById("currentUserPhone").innerHTML = userPhone;
+}
 
-function WriteToFile() {
-	var text_to_save = document.getElementById("firstName").value;
-	localStorage.setItem("text", text_to_save);
-    
- }
-
-function retrieve() {
-	var text = localStorage.getItem("text");
-	document.getElementById("writeHere").innerHTML = text;
+function testStorage() {
+	console.log(localStorage.getItem("userName"));
 }
 
 $(document).ready(function () {

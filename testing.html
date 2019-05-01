@@ -20,7 +20,7 @@ h1 {
 }
     </style>
 </head>
-<body>
+<body onload="showUserInfo()">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -42,21 +42,23 @@ h1 {
     <h1>TESTING AREA ONLY</h1>
     <br>
     <br>
-
-    	<form onSubmit="WriteToFile(this)">
+		<div>
 		<label>First Name: </label>
-		<input type="text" name="FirstName" id="firstName" size="20">
-		<label>Last Name: </label>
-		<input type="text" name="LastName" id="lastName" size="20">
-		<button type="button" onclick="retrieve()">Click here</button>
-	</form>
+		<input type="text" name="userName" id="userName" size="30" placeholder="Enter your name">
+		<input type="text" name="userPhone" id="userPhone" size="15" placeholder="Phone Number">
+		<button type="button" onclick="retrieve()">Submit Info (Click Once)</button>
+		</div>
 	
-	<p id="writeHere"></p>
+	<p>Current Name: <span id="currentUserName"></span></p>
+	<p>Current Phone: <span id="currentUserPhone"></span></p>
+	<p>New Name: <span id="newUserName"></span></p>
+	<p>New Phone: <span id="newUserPhone"></span></p>
     
 
     <br>
+	
 
-    <script src="myscripts.js"></script>
+    <script src="testscripts.js"></script>
     
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

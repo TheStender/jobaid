@@ -36,6 +36,24 @@ h1 {
 	margin-left: 40px;
 }
 
+.recordInfo {
+	position:relative;
+	top:10px;
+	margin-left: 40px;
+}
+
 .hideMultiple {
-	margin-left: 311px;
+	position:relative;
+	top:10px;
+	margin-left: 40px;
+}
+
+.userInfo {
+	font-size: 160%;
+	margin-left: 20px;
+}
+
+#submitUserInfo {
+	position:relative;
+	top: -7px;
 }

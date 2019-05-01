@@ -1,21 +1,3 @@
-function copyException() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = 'Checked Exception Facilities Spreadsheet. TIN XXX is an exception facility. \nMailing address is:\nXXX.\n\nFaxes may be sent to: (XXX)XXX-XXXX.\n\nMRR/Patient List Instructions are: [insert MRR/Patient List Instructions]. \n\nFirst name/last name, (XXX)XXX-XXXX, XXX@XXX.com is primary contact for facility. \n\nSpecial Instructions for Case: [insert information from Special Instructions tab]';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
-}
-
-function copyProvider() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = 'PROVIDER VERIFICATION:\nCalled (XXX)XXX-XXXX and spoke with XXX. Per XXX mailing address is:\nXXX.\n\nMedical records requests via fax ARE (are NOT) accepted. Faxes may be sent to: (XXX)XXX-XXXX.\n\nDirect Line for Medical Records Department is: (XXX)XXX-XXXX.\n\nTAT stated as XXXXXX. \n\nContacts screen updated.';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
-}
-
 function copyClient() {
     let textarea = document.createElement('textarea');
     textarea.textContent = 'CLIENT/NETWORK APPROVAL: \nPlaced letter information on the Client & Network Approval SharePoint';
@@ -27,7 +9,7 @@ function copyClient() {
 
 function copyPhone() {
     let textarea = document.createElement('textarea');
-    textarea.textContent = '763-361-6898';
+    textarea.textContent = localStorage.getItem("userPhone");
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
@@ -159,8 +141,9 @@ function formatPhone(obj) {
 }
 
 function getTaskNote() {
+	var userName = localStorage.getItem("userName");
     let textarea = document.createElement('textarea');
-    textarea.textContent = 'Case Assigned to Anthony Stender';
+    textarea.textContent = `Case Assigned to ${userName}`;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
@@ -172,37 +155,37 @@ function copyClaimLines() {
 	var recNum = document.getElementById('recordsReceived');
 	var selType = document.getElementById('lineOfBusiness');
 	var busType = selType.options[selType.selectedIndex].text;
+	var recNumInt = recNum.options[recNum.selectedIndex].text;
+	var patNumInt = patNum.options[patNum.selectedIndex].text;
+
+	var patNum2 = document.getElementById('patientNumber2');
+	var recNum2 = document.getElementById('recordsReceived2');
+	var selType2 = document.getElementById('lineOfBusiness2');
+	var busType2 = selType2.options[selType2.selectedIndex].text;
+	var recNumInt2 = recNum2.options[recNum2.selectedIndex].text;
+	var patNumInt2 = patNum2.options[patNum2.selectedIndex].text;
+	
     let textarea = document.createElement('textarea');
-	if(busType == "E&I") {
-		textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:${patNum.value}, M&R:0`;
-	} else if (busType == "M&R") {
-		textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:0, M&R:${patNum.value}`;
-	} else {
-		textarea.textContent = `Claim_lines:${patNum.value}, C&S:${patNum.value}, E&I:0, M&R:0`;
+	
+	if(document.getElementById('multipleLines').checked) {
+		var totalPatients = Number(patNumInt) + Number(patNumInt2);
+		textarea.textContent = `Claim_lines:${totalPatients}, C&S:0, E&I:${patNum.value}, M&R:${patNum2.value}`;
 	}
+	else {
+		if(busType == "E&I") {
+			textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:${patNum.value}, M&R:0`;
+		} else if (busType == "M&R") {
+			textarea.textContent = `Claim_lines:${patNum.value}, C&S:0, E&I:0, M&R:${patNum.value}`;
+		} else {
+			textarea.textContent = `Claim_lines:${patNum.value}, C&S:${patNum.value}, E&I:0, M&R:0`;
+		}
+	}
+
     
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
-}
-
-function copyNoInvoiceVerbiage() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = 'RECORDS RECEIVED:\nReceived (XX) of (XX) Medical Records. NO Invoice(s).\n\nE&I = X of X\nM&R = X of X\nC&S = X of X';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
-}
-
-function copyWithInvoiceVerbiage() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = `RECORDS RECEIVED: \nReceived (XX) of (XX) Medical Records. YES, Invoice attached to case.\n\nE&I = X of X\nM&R = X of X\nC&S = X of X`;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true); 
 }
 
 function copyConfirmation(message) {
@@ -222,18 +205,21 @@ function copyNoInvoice() {
 	var selType = document.getElementById('lineOfBusiness');
 	var busType = selType.options[selType.selectedIndex].text;
 	var recNumInt = recNum.options[recNum.selectedIndex].text;
+	var patNumInt = patNum.options[patNum.selectedIndex].text;
 
 	var patNum2 = document.getElementById('patientNumber2');
 	var recNum2 = document.getElementById('recordsReceived2');
 	var selType2 = document.getElementById('lineOfBusiness2');
 	var busType2 = selType2.options[selType2.selectedIndex].text;
 	var recNumInt2 = recNum2.options[recNum2.selectedIndex].text;
+	var patNumInt2 = patNum2.options[patNum2.selectedIndex].text;
 
 	let textarea = document.createElement('textarea');
 
 	if(document.getElementById('multipleLines').checked) {
 	    var totalRecords = Number(recNumInt) + Number(recNumInt2);
-	    console.log(totalRecords);
+		var totalPatients = Number(patNumInt) + Number(patNumInt2);
+	    textarea.textContent = `RECORDS RECEIVED:\nReceived ${totalRecords} of ${totalPatients} Medical Records. NO Invoice(s).\n\n${busType} = ${recNum.value} of ${patNum.value}\n${busType2} = ${recNum2.value} of ${patNum2.value}`;
 	}
 	else {
 	    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. NO Invoice(s).\n\n${busType} = ${recNum.value} of ${patNum.value}`;
@@ -243,9 +229,6 @@ function copyNoInvoice() {
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
-
-
-
 }
 
 function copyWithInvoice() {
@@ -253,8 +236,27 @@ function copyWithInvoice() {
 	var recNum = document.getElementById('recordsReceived');
 	var selType = document.getElementById('lineOfBusiness');
 	var busType = selType.options[selType.selectedIndex].text;
-    let textarea = document.createElement('textarea');
-    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. YES, Invoice attached to case.\n\n${busType} = ${recNum.value} of ${patNum.value}`;
+	var recNumInt = recNum.options[recNum.selectedIndex].text;
+	var patNumInt = patNum.options[patNum.selectedIndex].text;
+
+	var patNum2 = document.getElementById('patientNumber2');
+	var recNum2 = document.getElementById('recordsReceived2');
+	var selType2 = document.getElementById('lineOfBusiness2');
+	var busType2 = selType2.options[selType2.selectedIndex].text;
+	var recNumInt2 = recNum2.options[recNum2.selectedIndex].text;
+	var patNumInt2 = patNum2.options[patNum2.selectedIndex].text;
+
+	let textarea = document.createElement('textarea');
+
+	if(document.getElementById('multipleLines').checked) {
+	    var totalRecords = Number(recNumInt) + Number(recNumInt2);
+		var totalPatients = Number(patNumInt) + Number(patNumInt2);
+	    textarea.textContent = `RECORDS RECEIVED:\nReceived ${totalRecords} of ${totalPatients} Medical Records. YES, Invoice attached to case.\n\n${busType} = ${recNum.value} of ${patNum.value}\n${busType2} = ${recNum2.value} of ${patNum2.value}`;
+	}
+	else {
+	    textarea.textContent = `RECORDS RECEIVED:\nReceived ${recNum.value} of ${patNum.value} Medical Records. YES, Invoice attached to case.\n\n${busType} = ${recNum.value} of ${patNum.value}`;
+	}
+
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
@@ -281,6 +283,22 @@ function getInvoicePath() {
     textarea.select();
     document.execCommand("copy");
     textarea.setAttribute("hidden", true);
+}
+
+function updateUserInfo() {
+	var name = document.getElementById("getUserName").value;
+	var phone = document.getElementById("getUserPhone").value;
+	localStorage.setItem("userName", name);
+	localStorage.setItem("userPhone", phone);
+	document.getElementById("userName").innerHTML = localStorage.getItem("userName");
+	document.getElementById("userPhone").innerHTML = localStorage.getItem("userPhone");
+}
+
+function getUserInfo() {
+	var userName = localStorage.getItem("userName");
+	var userPhone = localStorage.getItem("userPhone");
+	document.getElementById("userName").innerHTML = userName;
+	document.getElementById("userPhone").innerHTML = userPhone;
 }
 
 $(document).ready(function () {
