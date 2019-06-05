@@ -301,6 +301,45 @@ function getUserInfo() {
 	document.getElementById("userPhone").innerHTML = userPhone;
 }
 
+function getMedicalRecordsPath() {
+    var detectID = document.getElementById('detectSource').innerHTML;
+    var pictsCase = document.getElementById('pictsNum').innerHTML;
+    var hospitalName = document.getElementById('hospName').innerHTML;
+    var medRecPath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\01 Working Data\\Medical Records";
+    let textarea = document.createElement('textarea');
+    textarea.textContent = medRecPath;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
+function getFullInvoicePath() {
+    var detectID = document.getElementById('detectSource').innerHTML;
+    var pictsCase = document.getElementById('pictsNum').innerHTML;
+    var hospitalName = document.getElementById('hospName').innerHTML;
+    var invoicePath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\01 Working Data\\Invoices";
+    let textarea = document.createElement('textarea');
+    textarea.textContent = invoicePath;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
+function getFullClinicalPath() {
+    var detectID = document.getElementById('detectSource').innerHTML;
+    var pictsCase = document.getElementById('pictsNum').innerHTML;
+    var hospitalName = document.getElementById('hospName').innerHTML;
+    var clinicalPath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\02 Clinical";
+    let textarea = document.createElement('textarea');
+    textarea.textContent = clinicalPath;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
 $(document).ready(function () {
 
     $("#step1Button").click(function () {
