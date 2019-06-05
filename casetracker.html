@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Case Tracker Test</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+
+#noBorder {
+  border: none;
+}
+</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>PICTS #</th>
+			<th>Provider</th>
+			<th>TIN</th>
+			<th>Current Status</th>
+		</tr>
+		<tr>
+			<td><a href="caseinfo.html">12345</a></td>
+			<td>Shakopee Hospital</td>
+			<td><a href="tininfo.html">12345678</a></td>
+			<td>Sent Initial Letter</td>
+		</tr>
+		<tr>
+			<td>45678</td>
+			<td>Eden Prairie Shop and Chop</td>
+			<td>44443322</td>
+			<td>1st Follow Up Call</td>
+		</tr>
+		<tr>
+			<td>54321</td>
+			<td>Brain Surgery 'R Us</td>
+			<td><a href="emptytin.html">2234567</a></td>
+			<td>Sent Follow Up Letter</td>
+		</tr>
+		<tr>
+			<td><input type="text" placeholder="PICTS Case"></td>
+			<td><input type="text" placeholder="Provider Name"></td>
+			<td><input type="text" placeholder="TIN"></td>
+			<td>
+				<select>
+				  <option value="sentMRR">Sent Initial Letter</option>
+				  <option value="firstCall">1st Follow Up Call</option>
+				  <option value="followupMRR">Sent Follow Up Letter</option>
+				  <option value="sentClinical">Sent to Clinical</option>
+				</select>
+			</td>
+			<td id="noBorder"><button>Add to tracker</button></td>
+		</tr>
+	</table>
+	
+	
+	
+	<h4>Notes</h4>
+	<ul>
+	<li>Will have a lot more info on this screen</li>
+	<li>Can Re-Assign cases to other users, will remove from one user list and add to another</li>
+	<li>Will keep track of case changes, ex: if added a case it will count as new case, if changing status to first phone call will count as follow up</li>
+	<li>Button to generate path to main folder can be here, more folder options in case info</li>
+	<li>In Case Info, can genrate all follow up call info for you, phone #, delivery date, # of patients, patient name?</li>
+	<li>Auto check EFS? (Microsoft Access Database)</li>
+	<li>Case info can generate file names for you, standardizing them</li>
+	<li>If tracker finds similar status/dates with TIN can give you the option of editing, reducing phone calls</li>
+	</ul>
+</body>
+</html>
