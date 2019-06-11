@@ -57,3 +57,8 @@ h1 {
 	position:relative;
 	top: -7px;
 }
+
+#recordGrid {
+	margin-left: 10px;
+	margin-right: 0px;
+}
