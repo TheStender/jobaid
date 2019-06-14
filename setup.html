@@ -9,18 +9,18 @@
 
 	
 	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="home.html"><img src="logo.jpg" width="40" height="40" alt=""></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-			</button>
+	<a class="navbar-brand" href="home.html"><img src="logo.jpg" width="40" height="40" alt=""></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+	<div class="navbar-nav">
 		<a class="nav-item nav-link active" href="home.html">Home</a>
 		<a class="nav-item nav-link" href="setup.html">Case Setup</a>
 		<a class="nav-item nav-link" href="records.html">Receive Records</a>
 		<a class="nav-item nav-link" href="phonescript.html">Phone Script</a>
 		<a class="nav-item nav-link" href="userInfo.html">User Info</a>
-    </div>
+	</div>
 	</div>
 	</nav>
 	
@@ -35,91 +35,116 @@
 
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step1" required>
-            <label class="custom-control-label" for="step1">Step One - Change "Assign Case Tasks" to In Progress. <span id="demo"></span> &emsp;</label><button type="button" onclick="getTaskNote()" class="btn btn-danger btn-sm" id="step1Button">Add Task Note</button>
+          <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+          <label class="custom-control-label" for="step-change-assign-tasks">
+            <span class="postpay-step-label"> Step # </span>
+            Change "Assign Case Tasks" to In Progress. 
+            <span id="demo"></span> &emsp;
+          </label>
+          <button type="button" id="caseAssignNote" class="btn btn-danger btn-sm postpay-button-danger" >Add Task Note</button>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step2" required>
-            <label class="custom-control-label" for="step2">Step Two - Enter information into case tracker</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+              <span class="postpay-step-label"> Step # </span> Enter information into case tracker</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step3" required>
-            <label class="custom-control-label" for="step3">Step Three - Check for PICTS folder on Y Drive</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+              <span class="postpay-step-label"> Step # </span> Check for PICTS folder on Y Drive</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step4" required>
-            <label class="custom-control-label" for="step4"><s>Step Four - In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old</s></label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> In Working Data SS - Check Financials and match to PICTS case, also make sure claim is less than 9 months old</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step5" required>
-            <label class="custom-control-label" for="step5">Step Five - Check for clinical review SS</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Check for clinical review SS</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step6" required>
-            <label class="custom-control-label" for="step6">Step Six - Check Project Summary SS for MRR Template</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Check Project Summary SS for MRR Template</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step7" required>
-            <label class="custom-control-label" for="step7">
-                Step Seven - Check Exceptions Facility SS - if no match found need to call provider for information&emsp;
-                <button type="button" onclick="window.location = 'phonescript.html';" class="btn btn-info btn-sm">Phone Script</button>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+            <span class="postpay-step-label"> Step # </span> Check Exceptions Facility SS - if no match found need to call provider for information&emsp;
+                <button type="button" onclick="window.location = 'phonescript.html';" class="btn btn-info btn-sm postpay-button-info">Phone Script</button>
             </label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step8" required>
-            <label class="custom-control-label" for="step8">Step Eight - Add and complete Validate Correspondence Address Task&emsp;<button type="button" onclick="copyConfirmation()" class="btn btn-danger btn-sm" id="step8Button">Add Task Note</button></label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Add and complete Validate Correspondence Address Task&emsp;
+            <button type="button" class="btn btn-danger btn-sm postpay-button-danger" id="validateAddress">Add Task Note</button></label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step9" required>
-            <label class="custom-control-label" for="step9">Step Nine - Create the new contact information on PICTS Contact tab</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Create the new contact information on PICTS Contact tab</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step10" required>
-            <label class="custom-control-label" for="step10">Step Ten - Create a new patient list SS based on patient tab of Clinical Review SS</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Create a new patient list SS based on patient tab of Clinical Review SS</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step11" required>
-            <label class="custom-control-label" for="step11">Step Eleven - Upload the new patient list SS into PICTS</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Upload the new patient list SS into PICTS</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step12" required>
-            <label class="custom-control-label" for="step12">Step Twelve - Add item to the client/network approval list</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Add item to the client/network approval list</label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step13" required>
-            <label class="custom-control-label" for="step13">Step Thirteen - Add notify external parties task and complete it&emsp;<button type="button" onclick="copyClient()" class="btn btn-danger btn-sm" id="step13Button">Add Task Note</button></label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Add notify external parties task and complete it&emsp;
+			<button type="button" class="btn btn-danger btn-sm postpay-button-danger" id="notifyNote">Add Task Note</button></label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step14" required>
-            <label class="custom-control-label" for="step14">Step Fourteen - Medical Records Request Letter Task - make sure to assign to User, Run X&emsp;<button type="button" onclick="copyPhone()" class="btn btn-info btn-sm" id="phoneButton">Get Phone Number</button></label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Medical Records Request Letter Task - make sure to assign to User, Run X&emsp;
+			<button type="button" class="btn btn-info btn-sm postpay-button-info" id="phoneButton">Get Phone Number</button></label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step15" required>
-            <label class="custom-control-label" for="step15">Step Fifteen - Complete MRR Fax Confirmation Task &emsp;</label><button type="button" onclick="copyConfirmation('Fax Confirmation Attached')" class="btn btn-danger btn-sm" id="mrrButton">Get Fax Note</button>&emsp;<button type="button" onclick="copyConfirmation('UPS Delivery Confirmation Attached')" class="btn btn-danger btn-sm" id="upsButton">Get UPS Note</button>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Complete MRR Fax Confirmation Task &emsp;</label>
+			<button type="button" class="btn btn-danger btn-sm postpay-button-danger" id="mrrButton">Get Fax Note</button>&emsp;
+			<button type="button" class="btn btn-danger btn-sm postpay-button-danger" id="upsButton">Get UPS Note</button>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step16" required>
-            <label class="custom-control-label" for="step16">Step Sixteen - Create hold for 120th day task. <span id="holdDate"></span></label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span> Create hold for 120th day task. <span id="holdDate"></span></label>
         </div>
 
         <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="step17" required>
-            <label class="custom-control-label" for="step17">Step Seventeen- Close Assign Case Tasks task</label>
+            <input type="checkbox" class="custom-control-input" id="step-change-assign-tasks" required>
+            <label class="custom-control-label" for="step-change-assign-tasks">
+			<span class="postpay-step-label"> Step # </span>Close Assign Case Tasks task</label>
         </div>
     </form>
 
@@ -130,7 +155,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 </html>

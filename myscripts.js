@@ -1,28 +1,30 @@
 function copyClient() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = 'CLIENT/NETWORK APPROVAL: \nPlaced letter information on the Client & Network Approval SharePoint';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+    copyToClipboard('CLIENT/NETWORK APPROVAL: \nPlaced letter information on the Client & Network Approval SharePoint');
 }
 
 function copyPhone() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = localStorage.getItem("userPhone");
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+    copyToClipboard(localStorage.getItem("userPhone"));
 }
 
 function copySharepoint() {
-    let textarea = document.createElement('textarea');
-    textarea.textContent = 'Case added to Post Pay Invoice Submissions SharePoint for invoice payment processing';
+    copyToClipboard('Case added to Post Pay Invoice Submissions SharePoint for invoice payment processing');
+}
+
+function faxNote() {
+	copyToClipboard('Fax Confirmation Attached');
+}
+
+function upsNote() {
+	copyToClipboard('UPS Confirmation Attached');
+}
+
+function copyToClipboard(content) {
+  	let textarea = document.createElement('textarea');
+    textarea.textContent = content;
     document.body.appendChild(textarea);
     textarea.select();
     document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+    document.body.removeChild(textarea);
 }
 
 function getVerbiage() {
@@ -188,14 +190,9 @@ function copyClaimLines() {
     textarea.setAttribute("hidden", true);
 }
 
-function copyConfirmation(message) {
-    var message = message;
-    let textarea = document.createElement('textarea');
-    textarea.textContent = message;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+function copyConfirmation() {
+	var content = "Validated Address"
+    copyToClipboard(content);
 }
 
 
@@ -266,23 +263,15 @@ function copyWithInvoice() {
 function copyClinical() {
 	var originalPath = document.getElementById("filePath").value;
 	var clinicalPath = "\\02 Initial Clinical";
-    let textarea = document.createElement('textarea');
-    textarea.textContent = `Refer to Clinical for review. Path: ${originalPath}${clinicalPath} `;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+    var content = `Refer to Clinical for review. Path: ${originalPath}${clinicalPath} `;
+    copyToClipboard(content);
 }
 
 function getInvoicePath() {
 	var originalPath = document.getElementById("filePath").value;
 	var invoicePath = "\\01 Intake\\Invoices";
-	let textarea = document.createElement('textarea');
-    textarea.textContent = `${originalPath}${invoicePath}`;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+	var content = `${originalPath}${invoicePath}`;
+	copyToClipboard(content);
 }
 
 function updateUserInfo() {
@@ -340,16 +329,34 @@ function getFullClinicalPath() {
     textarea.setAttribute("hidden", true);
 }
 
+function toggleButton(element, cssClassSuffix) {
+  $(element).toggleClass(`btn-${cssClassSuffix} btn-success `);
+}
+
+
 $(document).ready(function () {
 
-    $("#step1Button").click(function () {
-        $(this).toggleClass("btn-danger btn-success ");
+  	$(".postpay-button-danger").click(function() { toggleButton(this, "danger"); });
+  	$(".postpay-button-info").click(function() { toggleButton(this, "info"); });
+	$(".postpay-button-primary").click(function() { toggleButton(this, "primary"); });
+	
+	$(".postpay-step-label").each(function(index, element) {
+      $(element).text(`Step ${index + 1} -`);
     });
+	
+	$(".clinicalNote").click(copyClinical);
+	
+	$("#noInvoice").click(copyNoInvoice);
+	$("#yesInvoice").click(copyWithInvoice);
+	
+	$("#validateAddress").click(copyConfirmation);
+	$("#caseAssignNote").click(getTaskNote);
+	$("#notifyNote").click(copyClient);
+	$("#phoneButton").click(copyPhone);
+	$("#mrrButton").click(faxNote);
+	$("#upsButton").click(upsNote);
 
-    $("#step8Button").click(function () {
-        $(this).toggleClass("btn-danger btn-success ");
-    });
-
+	/* delete all once fixed
     $("#step13Button").click(function () {
         $(this).toggleClass("btn-danger btn-success ");
     });
@@ -359,10 +366,6 @@ $(document).ready(function () {
     });
 
     $("#yesInvoice").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-
-    $("#clinicalNote").click(function () {
         $(this).toggleClass("btn-info btn-success ");
     });
 
@@ -421,5 +424,5 @@ $(document).ready(function () {
 	$("#followUpButton").click(function () {
         $(this).toggleClass("btn-primary btn-success ");
     });
-	
+	*/
 });
