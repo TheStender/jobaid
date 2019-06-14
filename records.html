@@ -2,11 +2,6 @@
 <head>
     <title>Receiving Records</title>
     <link rel="stylesheet" type="text/css" href="site.css">
-<style>
-#postpay-right-sidebar {
-	padding-right: 40;
-}
-</style>
 </head>
 <body onload="clinicalDate()">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -34,8 +29,7 @@
     <br>
   
 
-    <div class="row">
-      <div class="col-8" id="postpay-main-content">
+      <div id="postpay-main-content">
 
         <form class="was-validated">
             <h4>Receive Records Steps</h4>
@@ -73,31 +67,32 @@
 
         <div class="hideUnless hide">
 
-        <form class="was-validated" id="invoiceSteps">
-            <h4>Invoice Steps</h4>
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="invoice1" required>
-                <label class="custom-control-label" for="invoice1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
-            </div>
+			<form class="was-validated" id="invoiceSteps">
+				<h4>Invoice Steps</h4>
+				<div class="custom-control custom-checkbox mb-3">
+					<input type="checkbox" class="custom-control-input" id="invoice1" required>
+					<label class="custom-control-label" for="invoice1">Save invoice page on DocDNA record to invoices folder of path - while you have path copied open Sharepoint ticket and paste path there</label>
+				</div>
 
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="invoice2" required>
-                <label class="custom-control-label" for="invoice2">Use invoice medical records note instead of regular note</label>
-            </div>
+				<div class="custom-control custom-checkbox mb-3">
+					<input type="checkbox" class="custom-control-input" id="invoice2" required>
+					<label class="custom-control-label" for="invoice2">Use invoice medical records note instead of regular note</label>
+				</div>
 
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="invoice3" required>
-                <label class="custom-control-label" for="invoice3">Submit to invoice sharepoint</label>
-            </div>
+				<div class="custom-control custom-checkbox mb-3">
+					<input type="checkbox" class="custom-control-input" id="invoice3" required>
+					<label class="custom-control-label" for="invoice3">Submit to invoice sharepoint</label>
+				</div>
 
-            <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="invoice4" required>
-                <label class="custom-control-label" for="invoice4">Add note to case about submitting invoice to sharepoint&emsp;<button type="button" id="sharepointInvoice" class="btn btn-info btn-sm" onclick="copySharepoint()">Sharepoint Note</button></label>
-            </div>
-        <button type="button" id="invoicePath" class="btn btn-info btn-sm" onclick="getInvoicePath()">Get Invoice Path</button>
-        </form>
-      <br>
-      </div>
+				<div class="custom-control custom-checkbox mb-3">
+					<input type="checkbox" class="custom-control-input" id="invoice4" required>
+					<label class="custom-control-label" for="invoice4">Add note to case about submitting invoice to sharepoint&emsp;
+					<button type="button" id="sharepointInvoice" class="btn btn-info btn-sm postpay-button-info">Sharepoint Note</button></label>
+				</div>
+				<button type="button" id="invoicePath" class="btn btn-info btn-sm postpay-button-info">Get Invoice Path</button>
+			</form>
+		  <br>
+		</div>
 
       <form class="was-validated">
 
@@ -221,15 +216,15 @@
 
             <div class="custom-control custom-checkbox mb-3">
                 <input type="checkbox" class="custom-control-input" id="step15" required>
-                <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one) <strong>Needs to be note type Clinical</strong>&emsp;<button type="button" onclick="copyClaimLines()" class="btn btn-info btn-sm" id="recordsStep15Button">Get Note</button></label>
+                <label class="custom-control-label" for="step15">Step Fifteen - Add note for clinical (verbiage in case tracker, needs to be exact "Claim_lines" one) 
+				<strong>Needs to be note type Clinical</strong>&emsp;
+				<button type="button" class="btn btn-info btn-sm postpay-button-info" id="claimLinesNote">Get Note</button></label>
             </div>
 
         </form>
       </div>
-      <div class="col-4 text-right" id="postpay-right-sidebar">
-        <button type="button" class="btn btn-info btn-sm clinicalNote postpay-button-info">Get Note</button>
-      </div>
-    </div>
+
+
 
 
     <script src="myscripts.js"></script>

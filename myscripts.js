@@ -1,3 +1,13 @@
+// Main copy function
+function copyToClipboard(content) {
+  	let textarea = document.createElement('textarea');
+    textarea.textContent = content;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+}
+
 function copyClient() {
     copyToClipboard('CLIENT/NETWORK APPROVAL: \nPlaced letter information on the Client & Network Approval SharePoint');
 }
@@ -18,15 +28,6 @@ function upsNote() {
 	copyToClipboard('UPS Confirmation Attached');
 }
 
-function copyToClipboard(content) {
-  	let textarea = document.createElement('textarea');
-    textarea.textContent = content;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-}
-
 function getVerbiage() {
     var originalPhone = document.getElementById("originalPhone").value;
     var name = document.getElementById("nameOfPerson").value;
@@ -39,9 +40,9 @@ function getVerbiage() {
     var special = document.getElementById("specialInstructions").value;
 
     if (fax.length == 0) {
-        fax = "not accepted";
+        fax = "are NOT accepted";
     } else {
-        fax = `accepted. Faxes may be sent to: ${fax}`;
+        fax = `ARE accepted. Faxes may be sent to: ${fax}`;
     }
 
 
@@ -75,7 +76,7 @@ function getVerbiage() {
         special = `Special Instructions are: ${special}\n\n`;
     }
 
-    var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ARE ${fax}\n\n${phone}${email}${tatTime}${special}Contacts screen updated.`;
+    var allTogether = `PROVIDER VERIFICATION:\nCalled ${originalPhone} and spoke with ${name}. \n\nPer ${name} mailing address is:\n${address}\n\nMedical records requests via fax ${fax}\n\n${phone}${email}${tatTime}${special}Contacts screen updated.`;
     document.getElementById("providerVerbiage").value = allTogether;
     var copyVerbiage = document.getElementById("providerVerbiage").select();
     document.execCommand("copy");
@@ -144,12 +145,8 @@ function formatPhone(obj) {
 
 function getTaskNote() {
 	var userName = localStorage.getItem("userName");
-    let textarea = document.createElement('textarea');
-    textarea.textContent = `Case Assigned to ${userName}`;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+	var content = `Case Assigned to ${userName}`;
+	copyToClipboard(content);
 }
 
 function copyClaimLines() {
@@ -295,12 +292,7 @@ function getMedicalRecordsPath() {
     var pictsCase = document.getElementById('pictsNum').innerHTML;
     var hospitalName = document.getElementById('hospName').innerHTML;
     var medRecPath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\01 Working Data\\Medical Records";
-    let textarea = document.createElement('textarea');
-    textarea.textContent = medRecPath;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+	copyToClipboard(medRecPath);
 }
 
 function getFullInvoicePath() {
@@ -308,12 +300,7 @@ function getFullInvoicePath() {
     var pictsCase = document.getElementById('pictsNum').innerHTML;
     var hospitalName = document.getElementById('hospName').innerHTML;
     var invoicePath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\01 Working Data\\Invoices";
-    let textarea = document.createElement('textarea');
-    textarea.textContent = invoicePath;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+	copyToClipboard(invoicePath);
 }
 
 function getFullClinicalPath() {
@@ -321,12 +308,7 @@ function getFullClinicalPath() {
     var pictsCase = document.getElementById('pictsNum').innerHTML;
     var hospitalName = document.getElementById('hospName').innerHTML;
     var clinicalPath = detectID + "\\PICTS " + pictsCase + " " + hospitalName + "\\02 Clinical";
-    let textarea = document.createElement('textarea');
-    textarea.textContent = clinicalPath;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.setAttribute("hidden", true);
+	copyToClipboard(clinicalPath);
 }
 
 function toggleButton(element, cssClassSuffix) {
@@ -336,93 +318,29 @@ function toggleButton(element, cssClassSuffix) {
 
 $(document).ready(function () {
 
+	// Toggles button to success
   	$(".postpay-button-danger").click(function() { toggleButton(this, "danger"); });
   	$(".postpay-button-info").click(function() { toggleButton(this, "info"); });
 	$(".postpay-button-primary").click(function() { toggleButton(this, "primary"); });
 	
+	// Assigns step number for steps
 	$(".postpay-step-label").each(function(index, element) {
       $(element).text(`Step ${index + 1} -`);
     });
 	
+	// Note buttons
 	$(".clinicalNote").click(copyClinical);
-	
 	$("#noInvoice").click(copyNoInvoice);
 	$("#yesInvoice").click(copyWithInvoice);
-	
 	$("#validateAddress").click(copyConfirmation);
 	$("#caseAssignNote").click(getTaskNote);
 	$("#notifyNote").click(copyClient);
 	$("#phoneButton").click(copyPhone);
 	$("#mrrButton").click(faxNote);
 	$("#upsButton").click(upsNote);
-
-	/* delete all once fixed
-    $("#step13Button").click(function () {
-        $(this).toggleClass("btn-danger btn-success ");
-    });
-
-    $("#noInvoice").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-
-    $("#yesInvoice").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-
-    $("#recordsStep15Button").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-	
-	$("#verbiageButton").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#phoneButton").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-	
-	$("#mrrButton").click(function () {
-        $(this).toggleClass("btn-danger btn-success ");
-    });
-
-	$("#verbiageButton1").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#verbiageButton2").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#verbiageButton3").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#verbiageButton4").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#verbiageButton5").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#verbiageButton6").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	
-	$("#sharepointInvoice").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-	
-	$("#invoicePath").click(function () {
-        $(this).toggleClass("btn-info btn-success ");
-    });
-
-	$("#upsButton").click(function () {
-        $(this).toggleClass("btn-danger btn-success ");
-    });
-
-	$("#followUpButton").click(function () {
-        $(this).toggleClass("btn-primary btn-success ");
-    });
-	*/
+	$("#claimLinesNote").click(copyClaimLines);
+	$("#invoicePath").click(getInvoicePath);
+	$("#sharepointInvoice").click(copySharepoint);
+	$("#verbiageButton").click(getVerbiage);
+	$("#followUpButton").click(getFollowUp);
 });
