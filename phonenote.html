@@ -1,0 +1,165 @@
+<html>
+<head>
+  <title>Phone Notes</title>
+  <link rel="stylesheet" type="text/css" href="site.css">
+</head>
+<body>
+  <h1>Phone Notes</h1>
+
+<div class="container">
+<div class="row">
+<div class="col">
+<h4>Number</h4>
+</div>
+<div class="col">
+<h4>Name</h4>
+</div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <input type="text" id="phoneNoteNumber" placeholder="Phone Number">
+  </div>
+  <div class="col">
+    <input type="text" id="noteName" placeholder="Contact Name">
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+<div class="col">
+<h4>First call</h4>
+</div>
+<div class="col">
+<h4>Second call</h4>
+</div>
+<div class="col">
+<h4>Final call</h4>
+</div>
+<div class="col">
+<h4>Additional Call</h4>
+</div>
+</div>
+
+<div class="row">
+<div class="col">
+  <button type="button" id="firstNotReceived" class="btn btn-info btn-sm" onClick="getPhoneNote(this.id)">Not Received</button>
+  <button type="button" id="firstVoicemail" class="btn btn-info btn-sm" onClick="getVoicemailNote(this.id)">Voicemail</button>
+  <button type="button" id="firstReceived" class="btn btn-info btn-sm" onClick="getReceivedNote(this.id)">Received</button>
+</div>
+<div class="col">
+  <button type="button" id="secondNotReceived" class="btn btn-info btn-sm" onClick="getPhoneNote(this.id)">Not Received</button>
+  <button type="button" id="secondVoicemail" class="btn btn-info btn-sm" onClick="getVoicemailNote(this.id)">Voicemail</button>
+  <button type="button" id="secondReceived" class="btn btn-info btn-sm" onClick="getReceivedNote(this.id)">Received</button>
+</div>
+<div class="col">
+  <button type="button" id="finalNotReceived" class="btn btn-info btn-sm" onClick="getPhoneNote(this.id)">Not Received</button>
+  <button type="button" id="finalVoicemail" class="btn btn-info btn-sm" onClick="getVoicemailNote(this.id)">Voicemail</button>
+  <button type="button" id="finalReceived" class="btn btn-info btn-sm" onClick="getReceivedNote(this.id)">Received</button>
+</div>
+<div class="col">
+  <button type="button" id="additionalNotReceived" class="btn btn-info btn-sm" onClick="getPhoneNote(this.id)">Not Received</button>
+  <button type="button" id="additionalVoicemail" class="btn btn-info btn-sm" onClick="getVoicemailNote(this.id)">Voicemail</button>
+  <button type="button" id="additionalReceived" class="btn btn-info btn-sm" onClick="getReceivedNote(this.id)">Received</button>
+</div>
+
+</div>
+</div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="myscripts.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+function getVoicemailNote(clicked_id) {
+
+    let callNumber = getId(clicked_id)
+
+    const phoneNumber = document.getElementById("phoneNoteNumber").value;
+
+    let textarea = document.createElement('textarea');
+    textarea.textContent = `${callNumber} provider phone call. Called ${phoneNumber}. No answer, left voicemail.`;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.setAttribute("hidden", true);
+}
+
+function getPhoneNote(clicked_id) {
+
+	let callNumber = getId(clicked_id)
+
+	let name = getName();
+
+	const phoneNumber = document.getElementById("phoneNoteNumber").value;
+
+	let textarea = document.createElement('textarea');
+    	textarea.textContent = `${callNumber} provider phone call. Called ${phoneNumber} and spoke with ${name}. Per ${name} request not showing in system yet, try back later.`;
+    	document.body.appendChild(textarea);
+    	textarea.select();
+    	document.execCommand("copy");
+    	textarea.setAttribute("hidden", true);
+}
+
+function getReceivedNote(clicked_id)
+{
+	let name = getName();
+	let callNumber = getId(clicked_id)
+	const phoneNumber = document.getElementById("phoneNoteNumber").value;
+
+	let textarea = document.createElement('textarea');
+    	textarea.textContent = `${callNumber} provider phone call. Called ${phoneNumber} and spoke with ${name}. Per ${name} request was received and is being processed.`;
+    	document.body.appendChild(textarea);
+    	textarea.select();
+    	document.execCommand("copy");
+    	textarea.setAttribute("hidden", true);
+}
+
+function getName()
+{
+
+	let contactName = document.getElementById("noteName").value;
+
+	let names = ["Mary", "Jen", "Julie", "Nick", "Kathy", "Jessica", "Nikki", "Dawn", "Amanda", "Deb", "Jennifer", "Kim", "Rachel", "Charlotte", "Janet", "Terry", "Jill", "Dave", "Rob", "Sue"];
+	let name = names[Math.floor(Math.random()*names.length)];
+
+	if(contactName != "")
+	{
+		return contactName;
+	}
+	else
+	{
+		return name;
+	}
+}
+
+function getId(phoneId) {
+	let noteId = phoneId;
+
+	if(noteId == "firstNotReceived" || noteId == "firstVoicemail" || noteId == "firstReceived")
+	{
+		return "First";
+	}
+	else if(noteId == "secondNotReceived" || noteId == "secondVoicemail" || noteId == "secondReceived")
+	{
+		return "Second";
+	}
+	else if(noteId == "finalNotReceived" || noteId == "finalVoicemail" || noteId == "finalReceived")
+	{
+		return "Final";
+	}
+	else
+	{
+		return "Additional";
+	}
+}
