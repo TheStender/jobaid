@@ -17,7 +17,7 @@ function copyPhone() {
 }
 
 function copySharepoint() {
-    copyToClipboard('Case added to Post Pay Invoice Submissions SharePoint for invoice payment processing');
+    copyToClipboard('Case added to Post Pay Invoice Submissions for invoice payment processing');
 }
 
 function faxNote() {
@@ -258,15 +258,16 @@ function copyWithInvoice() {
 }
 
 function copyClinical() {
-	var originalPath = document.getElementById("filePath").value;
+    var originalPath = document.getElementById("filePath").value;
+    let newPath = removeEnd(originalPath);
 	var clinicalPath = "\\02 Initial Clinical";
-    var content = `Refer to Clinical for review. Path: ${originalPath}${clinicalPath} `;
+    var content = `Refer to Clinical for review. Path: ${newPath}${clinicalPath} `;
     copyToClipboard(content);
 }
 
 function getInvoicePath() {
-	var originalPath = document.getElementById("filePath").value;
-	var invoicePath = "\\01 Intake\\Invoices";
+    var originalPath = document.getElementById("filePath").value.trim();
+	var invoicePath = "\\Invoices";
 	var content = `${originalPath}${invoicePath}`;
 	copyToClipboard(content);
 }
@@ -311,10 +312,97 @@ function getFullClinicalPath() {
 	copyToClipboard(clinicalPath);
 }
 
-function toggleButton(element, cssClassSuffix) {
-  $(element).toggleClass(`btn-${cssClassSuffix} btn-success `);
+function getCase() {
+    let theText = document.getElementById("caseText").value;
+
+    let caseNumber = theText.match(/Case\s(.+)/)[1];
+    let providerText = theText.match("Party Name:(.*)Exposure")[1].trim();
+    let detectionID = theText.match("Source ID:(.*)Referral")[1].trim();
+    let businessLine = theText.match("LOB:(.*)Primary")[1].trim();
+    let exposureAmount = theText.match(/Exposure Amount:(.+)/)[1];
+    let tinNumber = theText.match("Par Status:(.*)-")[1].trim();
+    let todayDate = getDate();
+
+    let allText = `Sent letter*${caseNumber}*Sent Initial MRR*Fac*${providerText}*${todayDate}*N/A*Facility Upcoding*${detectionID}*${businessLine}*${exposureAmount}*${tinNumber}`;
+    
+    document.getElementById("caseDataHere").innerHTML = allText;
 }
 
+function getDate() {
+    today = new Date();
+    let mm = today.getMonth()+1;
+    let dd = today.getDate();
+    let yyyy = today.getFullYear();
+
+    let todayDate = `${mm}/${dd}/${yyyy}`;
+
+    return todayDate;
+}
+
+function removeEnd(noteId) {
+    let pathId = noteId;
+    let newPath = pathId.trim().slice(0,-10);
+    return(newPath);
+}
+
+function getVoicemailNote(clicked_id) {
+    let callNumber = getId(clicked_id);
+    const phoneNumber = document.getElementById("phoneNoteNumber").value.trim();
+
+    let voicemailNote = `${callNumber} provider phone call. Called ${phoneNumber}. No answer, left voicemail.`;
+
+    copyToClipboard(voicemailNote);
+}
+
+function getPhoneNote(clicked_id) {
+    let callNumber = getId(clicked_id);
+    let name = getName();
+    const phoneNumber = document.getElementById("phoneNoteNumber").value.trim();
+
+    let phoneNote = `${callNumber} provider phone call. Called ${phoneNumber} and spoke with ${name}. Per ${name} request not showing in system yet, try back later.`;
+
+    copyToClipboard(phoneNote);
+}
+
+function getReceivedNote(clicked_id) {
+    let name = getName();
+    let callNumber = getId(clicked_id);
+    const phoneNumber = document.getElementById("phoneNoteNumber").value.trim();
+
+    let receivedNote = `${callNumber} provider phone call. Called ${phoneNumber} and spoke with ${name}. Per ${name} request was received and is being processed.`;
+
+    copyToClipboard(receivedNote);
+}
+
+function getName() {
+    let contactName = document.getElementById("noteName").value;
+
+    let names = ["Mary", "Jen","Julie","Nick","Nikki","Kathy","Dawn","Andy","Sue","Rachel","Jennifer","Mark","Amanda"];
+    let name = names[Math.floor(Math.random()*names.length)];
+
+    if(contactName != "")
+        return contactName;
+    else    
+        return name;
+
+}
+
+function getId(phoneId) {
+    let noteId = phoneId;
+
+    if(noteId == "firstNotReceived" || noteId == "firstVoicemail" || noteId == "firstReceived")
+        return "First";
+    else if(noteId == "secondNotReceived" || noteId == "secondVoicemail" || noteId == "secondReceived")
+        return "Second";
+    else if(noteId == "finalNotReceived" || noteId == "finalVoicemail" || noteId == "finalReceived")
+        return "Final";
+    else
+        return "Additional";
+}
+
+function toggleButton(element, cssClassSuffix) {
+    $(element).toggleClass(`btn-${cssClassSuffix} btn-success `);
+  }
 
 $(document).ready(function () {
 
@@ -342,5 +430,6 @@ $(document).ready(function () {
 	$("#invoicePath").click(getInvoicePath);
 	$("#sharepointInvoice").click(copySharepoint);
 	$("#verbiageButton").click(getVerbiage);
-	$("#followUpButton").click(getFollowUp);
+    $("#followUpButton").click(getFollowUp);
+    $("#getCaseInfo").click(getCase);
 });
